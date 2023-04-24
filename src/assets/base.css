@@ -1,0 +1,34 @@
+:root {
+  --color1: #007DAD;
+  --color2: #005B88;
+  --color3: #04132a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: none;
+  font-family: 'Noto Serif HK', serif;
+}
+
+.router-link-active {
+  text-decoration: none;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bgSetting {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
