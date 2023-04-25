@@ -29,11 +29,12 @@ import SideBar from './components/SideBar.vue';
   position: absolute;
   top: 0px;
   right: 0px;
-  z-index: 5;
+  z-index: 5
 }
 header{
   position: absolute;
   top: 0px;
+  z-index: 3;
 }
 
 </style>
