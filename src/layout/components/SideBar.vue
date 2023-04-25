@@ -23,21 +23,28 @@ function onEnter(el, done) {
 }
 function onLeave(el, done) {
     gsap.to(el, { opacity: 0, duration: 0.5, x: 300, delay: 0.2, onComplete: done })
-}  
+}
+
+function menuClick() {
+    isShow.value = !isShow.value
+    setTimeout(() => {
+        isActive.value = !isActive.value
+    },100)
+}
 </script>
 
 <template>
     <div class="menuGround">
         <p class="menuText">M E N U</p>
         <div class="sideBarGround">
-            <div class="menu" :class="{ 'active': isActive }" @click="isActive = !isActive">
+            <div class="menu" :class="{ 'active': isActive }" @click="menuClick">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
 
-        <div class="hamburgerMenu">
+        <div class="hamburgerMenu" v-if="isShow">
             <Transition name="slide-fade" @enter="onEnter" @leave="onLeave">
                 <ul class="linkGround" v-if="isActive">
                     <li class="inner1">
@@ -111,7 +118,8 @@ function onLeave(el, done) {
         list-style: none;
         z-index: 3;
         opacity: 0.8;
-        .inner1{
+
+        .inner1 {
             margin-top: 20vh;
         }
     }
