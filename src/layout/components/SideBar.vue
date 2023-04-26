@@ -76,9 +76,9 @@ function menuClick() {
                         </div>
                         <transition name="semiRouter-slide">
                             <div class="semiRouter" v-if="isSemiRouter">
-                                <RouterLink to="/Contact" @click="menuClick">建築工法</RouterLink>
-                                <RouterLink to="/Contact" @click="menuClick">嚴選建材</RouterLink>
-                                <RouterLink to="/Contact" @click="menuClick">建興團隊</RouterLink>
+                                <RouterLink to="/Tech_arch" @click="menuClick">建築工法</RouterLink>
+                                <RouterLink to="/Tech_material" @click="menuClick">嚴選建材</RouterLink>
+                                <RouterLink to="/Tech_team" @click="menuClick">建興團隊</RouterLink>
                             </div>
                         </transition>
                     </li>
@@ -192,7 +192,6 @@ function menuClick() {
 
 
 .linkGround a {
-    text-decoration: none;
     font-size: 18px;
     color: rgba(255, 255, 255, 0.70);
 }

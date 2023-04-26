@@ -6,8 +6,10 @@ const router = useRouter();
 
 
 import { ref } from 'vue';
+import { usePageData } from '@/stores/pageData';
+const uPageData = usePageData();
 
-const scorllUse = ref(false)
+const scorllUse = ref(uPageData.scorllUse)
 const scrollDistance = ref(null)
 
 function handleScroll() {
@@ -16,7 +18,6 @@ function handleScroll() {
   const { clientHeight } = scrollDistance.value;
   const distance = scrollHeight - scrollTop - clientHeight;
   if (distance !== 0) scorllUse.value = true
-  console.log(distance);
   if (distance === 0) scorllUse.value = false
 
 }

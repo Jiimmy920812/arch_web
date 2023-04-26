@@ -1,12 +1,10 @@
 <script setup>
+import Tech from './Tech.vue'
 
 </script>
 
 <template>
-  <h1>tech</h1>
-
+  <Tech type="arch" />
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 const emits = defineEmits(['page']);
 const props = defineProps({
@@ -17,15 +17,14 @@ const props = defineProps({
     },
 });
 
-const currentPage = computed({
-    get() {
-        return props.currentPage;
-    },
-    set(val) {
-        emits('page', val);
-    },
-});
 
+
+
+const currentPage = ref(props.currentPage)
+
+watch(() => currentPage.value, () => {
+    emits('page', currentPage.value);
+})
 
 const pageNum = computed(() => Math.ceil(props.dataTotal / props.pageSize));
 
@@ -48,53 +47,107 @@ const renderArr = computed(() => {
     return newArr;
 });
 
-
+function toTop() {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+}
 
 </script>
 
 <template>
-    {{ currentPage }}
-    {{ pageNumber }}
     <div class="el-pagination ">
-        <button :disabled="currentPage === 1" @click="currentPage = 1">
-            <div class="left"></div>
-        </button>
         <ul class="el-pager">
-            <li v-for="pageNumber, index in renderArr" :key="index" :class="{ 'is-active': currentPage == pageNumber }"
-                class="number " @click="currentPage = pageNumber" @keydown="fn">{{ pageNumber }}</li>
+            <button class="numbrerBg" :disabled="currentPage === 1" @click="currentPage = 1, toTop()">
+                <div class="arrow left"></div>
+            </button>
+            <li v-for="pageNumber, index in renderArr" :key="index" :class="{ 'is-active': currentPage === pageNumber }"
+                class="numbrerBg" @click="(currentPage = pageNumber), toTop()" @keydown="fn">{{ pageNumber }}
+            </li>
+            <button class="numbrerBg" :disabled="currentPage === pageNum" @click="currentPage = pageNum, toTop()">
+                <div class="arrow right "></div>
+            </button>
         </ul>
-
-        <button :disabled="currentPage === pageNum" @click="currentPage = pageNum">
-            <div class="right"></div>
-        </button>
     </div>
 </template>
 
 <style scoped lang="scss">
+button {
+    background: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+
+
+.arrow {
+    border: solid var(--text_Gray);
+    border-width: 0px 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+}
+
+
+.el-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.is-active {
+    width: 40px !important;
+    height: 40px !important;
+    background-color: var(--gold_1);
+    border: none !important;
+    color: white !important;
+}
+
+.numbrerBg {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--black_1);
+    box-sizing: border-box;
+}
+
+.numbrerBg:hover {
+    width: 40px;
+    height: 40px;
+    background-color: var(--gold_1);
+    border: none !important;
+    color: white !important;
+}
+
+.numbrerBg:hover .arrow {
+    border: solid white;
+    border-width: 0px 3px 3px 0;
+}
+
+
+
+
 .el-pager {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 
     li {
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 40px;
-        height: 40px;
-        border: 1px solid var(--black_1);
+
         list-style: none;
-        margin: 10px;
         color: var(--text_Gray);
     }
-}
-
-.is-active {
-    width: 42px !important;
-    height: 42px !important;
-    background-color: var(--gold_1);
-    border: none !important;
-    color: white !important;
 }
 </style>

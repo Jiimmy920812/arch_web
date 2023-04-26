@@ -1,8 +1,20 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import Card_Plan from '../components/Card_Plan.vue'
 import pagination from '../components/Pagination.vue'
 
+const props = defineProps({
+  type: {
+    type: String,
+    default: '',
+  }
+})
+
+
+const currentPage = ref(1)
+const pageSize = ref(5)
+
+const type = ref(props.type)
 const cardArr = [
   {
     type: 'arch',
@@ -62,21 +74,50 @@ const cardArr = [
   }
 ]
 
-const currentPage = ref(1)
+function getPage(value) {
+  currentPage.value = value;
+}
+
+const cardArrType = computed(() => {
+  if (type.value === 'arch') return cardArr.filter((n) => n.type === 'arch');
+  if (type.value === 'team') return cardArr.filter((n) => n.type === 'team');
+  if (type.value === 'material') return cardArr.filter((n) => n.type === 'material');
+  return cardArr;
+})
+
+const currentPageData = computed(() => {
+  const startIndex = (currentPage.value - 1) * pageSize.value
+  const endIndex = startIndex + pageSize.value
+  return cardArrType.value.slice(startIndex, endIndex)
+})
+
 
 
 </script>
 
 <template>
   <div class="TechBg">
-    <div class="section1 center" v-for="value, index in cardArr" :key="index">
+    <div class="center" v-for="value, index in currentPageData" :key="index">
       <Card_Plan :img="value.img" :verticalText='value.verticalText' :title='value.title' :date="value.date"
         :content="value.content" />
     </div>
-    <div class="pagination">
-      <pagination :currentPage="currentPage" :dataTotal="30" :pageSize="6" />
+    <div class="pagination center">
+      <pagination :currentPage="page" :dataTotal="cardArrType.length" :pageSize="pageSize" @page="getPage" />
     </div>
+    <div class="footer">
+      <p class="title">所有文章</p>
+      <p>
+        <RouterLink to="/Tech_arch">建築工法</RouterLink>
+      </p>
+      <p>
+        <RouterLink to="/Tech_material">嚴選建材</RouterLink>
+      </p>
+      <p>
+        <RouterLink to="/Tech_team">建興團隊</RouterLink>
+      </p>
 
+
+    </div>
   </div>
 </template>
 
@@ -87,8 +128,21 @@ const currentPage = ref(1)
 
 .pagination {
   width: 100%;
-  height: 200px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  height: 300px;
 }
-</style>
+
+.footer {
+  width: 100%;
+  height: 150px;
+  background-color: var(--black_1);
+
+  .title {
+    color: var(--gold_1);
+    font-size: 18px;
+  }
+
+  a {
+    color: var(--text_Gray);
+    font-size: 18px;
+  }
+}</style>

@@ -24,6 +24,21 @@ const router = createRouter({
           component: () => import('../views/Tech.vue'),
         },
         {
+          path: '/Tech_arch',
+          name: 'Tech_arch',
+          component: () => import('../views/Tech_arch.vue'),
+        },
+        {
+          path: '/Tech_material',
+          name: 'Tech_material',
+          component: () => import('../views/Tech_material.vue'),
+        },
+        {
+          path: '/Tech_team',
+          name: 'Tech_team',
+          component: () => import('../views/Tech_team.vue'),
+        },
+        {
           path: '/Introduce',
           name: 'Introduce',
           component: () => import('../views/Introduce.vue'),
