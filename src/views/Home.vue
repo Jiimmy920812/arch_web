@@ -104,13 +104,13 @@ function clickLine(index) {
       </div>
     </div>
     <div class="control">
-      <div class="textGround" @click="prev">
+      <div class="textGround1" @click="prev">
         <div class="arrow left"></div>
-        <p>PREV</p>
+        <p class="text1">PREV</p>
       </div>
       <div class="line"></div>
-      <div class="textGround" @click="next">
-        <p>NEXT</p>
+      <div class="textGround2" @click="next">
+        <p class="text2">NEXT</p>
         <div class="arrow "></div>
       </div>
     </div>
@@ -133,7 +133,6 @@ function clickLine(index) {
 <style scoped lang="scss">
 p {
   font-size: 24px;
-  color: white;
   font-weight: bolder;
 }
 
@@ -165,8 +164,10 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('../assets/img/home_page_1.jpg');
-  p{
+
+  p {
     margin-top: 15px;
+    color: white;
   }
 }
 
@@ -175,24 +176,28 @@ p {
   bottom: 30px;
   right: 80px;
   display: flex;
-  gap: 80px;
+  gap: 60px;
   z-index: 5;
-
-  p {
-    font-size: 16px;
-  }
-
-  .textGround {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
 
   .line {
     height: 50px;
     width: 1px;
     background-color: white;
+  }
+
+}
+
+.textGround1 {
+  width: 80px;
+  justify-content: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .text1 {
+    font-size: 16px;
+    color: white;
   }
 
   .arrow {
@@ -207,6 +212,53 @@ p {
     rotate: (180deg);
   }
 }
+
+
+.textGround2 {
+  width: 80px;
+  justify-content: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .text2 {
+    font-size: 16px;
+    color: white;
+  }
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 0 7px 7px;
+    border-color: transparent transparent transparent #ffffff;
+  }
+}
+
+
+
+
+.textGround1:hover .text1 {
+  color: var(--gold_1) !important;
+  margin-left: 10px;
+}
+
+.textGround1:hover .left {
+  border-color: transparent transparent transparent var(--gold_1) !important;
+}
+
+.textGround2:hover .text2 {
+  margin-right: 10px;
+  color: var(--gold_1) !important;
+}
+
+.textGround2:hover .arrow {
+  border-color: transparent transparent transparent var(--gold_1) !important;
+}
+
+
+
 
 .lineControl {
   bottom: 40px;
@@ -229,7 +281,7 @@ p {
     }
 
     .isClick {
-      background-color: #cc9b55;
+      background-color: var(--gold_1);
     }
 
   }
@@ -244,6 +296,7 @@ p {
 
     p {
       font-size: 14px;
+      color: white;
     }
   }
 }

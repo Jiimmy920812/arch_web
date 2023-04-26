@@ -2,9 +2,19 @@
 import gsap from 'gsap'
 import { ref } from 'vue';
 
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
 const isShow = ref(false)
 const isActive = ref(false)
 const isSemiRouter = ref(false)
+
+const props = defineProps({
+    isScroll: {
+        type: Boolean,
+        default: false,
+    }
+})
 
 
 function onEnter(el, done) {
@@ -26,21 +36,26 @@ function onLeave(el, done) {
 }
 
 function menuClick() {
+    isSemiRouter.value = false
     isShow.value = !isShow.value
     setTimeout(() => {
         isActive.value = !isActive.value
-    },100)
+    }, 100)
 }
 </script>
 
 <template>
     <div class="menuGround">
-        <p class="menuText">M E N U</p>
+        <p class="menuText"
+            :class="{ blackText: router.currentRoute.value.path !== '/', whiteText: isShow || props.isScroll }">M E N U</p>
         <div class="sideBarGround">
             <div class="menu" :class="{ 'active': isActive }" @click="menuClick">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span
+                    :class="{ blackSpan: router.currentRoute.value.path !== '/', whiteSpan: isShow || props.isScroll }"></span>
+                <span
+                    :class="{ blackSpan: router.currentRoute.value.path !== '/', whiteSpan: isShow || props.isScroll }"></span>
+                <span
+                    :class="{ blackSpan: router.currentRoute.value.path !== '/', whiteSpan: isShow || props.isScroll }"></span>
             </div>
         </div>
 
@@ -48,30 +63,30 @@ function menuClick() {
             <Transition name="slide-fade" @enter="onEnter" @leave="onLeave">
                 <ul class="linkGround" v-if="isActive">
                     <li class="inner1">
-                        <RouterLink to="/">首頁</RouterLink>
+                        <RouterLink to="/" @click="menuClick">首頁</RouterLink>
                     </li>
                     <li class="inner2">
-                        <RouterLink to="/About">關於建興</RouterLink>
+                        <RouterLink to="/About" @click="menuClick">關於建興</RouterLink>
                     </li>
                     <li class="inner3">
                         <div class="mainRouter">
-                            <RouterLink to="/Tech">建興工學</RouterLink>
-                            <div class="icon" @click="isSemiRouter = !isSemiRouter" :class="{ iconReverse: isSemiRouter }">
+                            <RouterLink to="/Tech" @click="menuClick">建興工學</RouterLink>
+                            <div class="icon" @click="isSemiRouter = true" :class="{ iconReverse: isSemiRouter }">
                             </div>
                         </div>
                         <transition name="semiRouter-slide">
                             <div class="semiRouter" v-if="isSemiRouter">
-                                <RouterLink to="/Contact">建築工法</RouterLink>
-                                <RouterLink to="/Contact">嚴選建材</RouterLink>
-                                <RouterLink to="/Contact">建興團隊</RouterLink>
+                                <RouterLink to="/Contact" @click="menuClick">建築工法</RouterLink>
+                                <RouterLink to="/Contact" @click="menuClick">嚴選建材</RouterLink>
+                                <RouterLink to="/Contact" @click="menuClick">建興團隊</RouterLink>
                             </div>
                         </transition>
                     </li>
                     <li class="inner4">
-                        <RouterLink to="/Introduce">建案介紹</RouterLink>
+                        <RouterLink to="/Introduce" @click="menuClick">建案介紹</RouterLink>
                     </li>
                     <li class="inner5">
-                        <RouterLink to="/Contact">聯絡我們</RouterLink>
+                        <RouterLink to="/Contact" @click="menuClick">聯絡我們</RouterLink>
                     </li>
                 </ul>
             </Transition>
@@ -79,27 +94,49 @@ function menuClick() {
     </div>
 </template>
 
-<style lang="scss">
-.menuGround {
-    position: absolute;
-    justify-content: end;
-    height: 100px;
-    width: 200px;
-    display: flex;
-    align-items: center;
+<style lang="scss" scoped>
+.blackText {
+    color: black !important;
 }
 
-.menuText {
-    font-size: 20px;
-    color: white;
-    font-weight: bolder;
+.blackSpan {
+    background: rgb(0, 0, 0) !important;
 }
+
+.whiteText {
+    color: white !important;
+}
+
+.whiteSpan {
+    background: rgb(255, 255, 255) !important;
+}
+
+
+.menuGround {
+    position: fixed;
+    justify-content: end;
+    padding-right: 50px;
+    top: 0;
+    right: 0;
+    height: 100px;
+    width: 450px;
+    display: flex;
+    align-items: center;
+
+    .menuText {
+        font-size: 20px;
+        color: white;
+        font-weight: bolder;
+    }
+
+}
+
 
 
 .hamburgerMenu {
     position: absolute;
     top: 0px;
-    right: -50px;
+    right: 0px;
     width: 450px;
     height: 100vh;
     overflow: hidden;
@@ -113,7 +150,7 @@ function menuClick() {
         align-items: start;
         width: 450px;
         height: 100vh;
-        background-color: #111;
+        background-color: var(--black_1);
         background-image: url('../../assets/img/menu-line.png');
         list-style: none;
         z-index: 3;

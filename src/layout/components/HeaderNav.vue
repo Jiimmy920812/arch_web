@@ -1,62 +1,73 @@
 <script setup>
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const props = defineProps({
+  isScroll: {
+    type: Boolean,
+    default: false,
+  }
+})
+
+
 
 </script>
 
 <template>
- <div class="headerNav">
-    <div class="logo" >
-      <p class="title">建興建設</p>
-      <p class="subTitle">CHIEN SHIH CO.,LTD</p>
+  <div class="headerNav" :class="{ topBg: props.isScroll }">
+    <div class="logo">
+      <p class="title" :class="{ blackText: router.currentRoute.value.path !== '/', whiteText: props.isScroll }">建興建設</p>
+      <p class="subTitle" :class="{ blackText: router.currentRoute.value.path !== '/', whiteText: props.isScroll }">CHIEN
+        SHIH
+        CO.,LTD</p>
     </div>
 
- 
+
   </div>
-  
-  
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.blackText {
+  color: black !important;
+  ;
+}
+
+.whiteText {
+  color: rgb(255, 255, 255) !important;
+}
 
 
-.headerNav{
-  position: absolute;
+.headerNav {
+  position: fixed;
+  top: 0;
   height: 100px;
   width: 100vw;
-  // background-color: rgb(21 23 28 / 0.8);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo{
+.topBg {
+  background-color: rgba(63, 63, 63, 0.8);
+}
+
+
+
+.logo {
   position: absolute;
   left: 50px;
 }
-.menuGround{
-  position: absolute;
-  right: 50px;
-}
-.title{
+
+
+
+.title {
   font-size: 25px;
   font-weight: bolder;
   color: white;
 }
 
-.subTitle{
+.subTitle {
   font-size: 9px;
   font-family: 'Carlito', sans-serif;
   color: white;
 }
-
-.menuGround{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.menuText{
-  font-size: 20px;
-  color: white;
-  font-weight: bolder;
-}
-
 </style>
