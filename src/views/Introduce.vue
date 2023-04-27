@@ -1,8 +1,8 @@
 <script setup>
 import Card_introduce from '../components/Card_introduce.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
 import { Mousewheel, Pagination } from 'swiper';
 
 const modules = [Mousewheel, Pagination]
