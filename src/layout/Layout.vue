@@ -3,44 +3,38 @@ import headerNav from './components/HeaderNav.vue';
 import SideBar from './components/SideBar.vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
-
-
-import { ref } from 'vue';
 import { usePageData } from '@/stores/pageData';
 const uPageData = usePageData();
 
-const scorllUse = ref(uPageData.scorllUse)
+
+import { ref } from 'vue';
+
 const scrollDistance = ref(null)
 
 function handleScroll() {
-  const { scrollHeight } = scrollDistance.value;
+  // const { scrollHeight } = scrollDistance.value;
+  // const { clientHeight } = scrollDistance.value;
+  // const distance = scrollHeight - scrollTop - clientHeight;
   const scrollTop = scrollDistance.value.scrollTop || document.documentElement.scrollTop;
-  const { clientHeight } = scrollDistance.value;
-  const distance = scrollHeight - scrollTop - clientHeight;
-  if (distance !== 0) scorllUse.value = true
-  if (distance === 0) scorllUse.value = false
-
+  if (scrollTop !== 0) uPageData.scorllUse = true
+  if (scrollTop === 0) uPageData.scorllUse = false
 }
 
-function toTop() {
-  document.body.scrollTop = document.documentElement.scrollTop = 0;
-  scorllUse.value = false
-}
 
 </script>
 
 <template>
   <div class="container">
     <div class="sideBar">
-      <SideBar :isScroll="scorllUse" />
+      <SideBar :isScroll="uPageData.scorllUse" />
     </div>
     <header>
-      <headerNav :isScroll="scorllUse" />
+      <headerNav :isScroll="uPageData.scorllUse" />
     </header>
-    <div @wheel="handleScroll" ref="scrollDistance">
+    <div class="routerView" @wheel="handleScroll" ref="scrollDistance">
       <RouterView />
     </div>
-    <div class="topButtonBg" @click="toTop" v-if="router.currentRoute.value.path !== '/'">
+    <div class="topButtonBg" @click="uPageData.toTopSmooth" v-if="router.currentRoute.value.path !== '/'">
       <div class="topButton"></div>
       <div class="line"></div>
       <p>TOP</p>
@@ -66,6 +60,11 @@ header {
   position: absolute;
   top: 0px;
   z-index: 3;
+}
+
+.routerView {
+  width: 100%;
+  height: 100%;
 }
 
 .topButtonBg {

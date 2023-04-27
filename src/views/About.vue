@@ -82,9 +82,7 @@ const planImg = [
           <p>BRAND CONCEPT</p>
           <div class="line"></div>
         </div>
-
       </div>
-
     </div>
 
   </div>
@@ -111,6 +109,7 @@ const planImg = [
   .title {
     font-size: 18px;
     color: var(--gold_1);
+    letter-spacing: 5px;
   }
 
   .textGround {
@@ -166,7 +165,7 @@ const planImg = [
 
     .lastText {
       margin-top: 80px;
-      margin-bottom: 200px;
+      margin-bottom: 100px;
       width: 100%;
       display: flex;
       align-items: center;

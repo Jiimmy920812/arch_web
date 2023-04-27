@@ -2,6 +2,9 @@
 import { ref, computed } from 'vue';
 import Card_Plan from '../components/Card_Plan.vue'
 import pagination from '../components/Pagination.vue'
+import { usePageData } from '@/stores/pageData';
+const uPageData = usePageData();
+
 
 const props = defineProps({
   type: {
@@ -33,7 +36,7 @@ const cardArr = [
     content: "由專業建築師團隊打造，每場作品的結構皆安穩扎實，建築外觀細膩而雅致，呈現最具匠心的建築，實現仰德品味。"
   },
   {
-    type: 'team',
+    type: 'material',
     img: "src/assets/img/Tech/Tech_material_1.jpg",
     verticalText: '嚴選建材',
     title: "德國DUKER鑄鐵管",
@@ -105,18 +108,18 @@ const currentPageData = computed(() => {
       <pagination :currentPage="page" :dataTotal="cardArrType.length" :pageSize="pageSize" @page="getPage" />
     </div>
     <div class="footer">
-      <p class="title">所有文章</p>
-      <p>
+      <p @click="uPageData.toTop">
+        <RouterLink class="title" to="/Tech">所有文章</RouterLink>
+      </p><span class="line"></span>
+      <p @click="uPageData.toTop">
         <RouterLink to="/Tech_arch">建築工法</RouterLink>
       </p>
-      <p>
+      <p @click="uPageData.toTop">
         <RouterLink to="/Tech_material">嚴選建材</RouterLink>
       </p>
-      <p>
+      <p @click="uPageData.toTop">
         <RouterLink to="/Tech_team">建興團隊</RouterLink>
       </p>
-
-
     </div>
   </div>
 </template>
@@ -132,17 +135,38 @@ const currentPageData = computed(() => {
 }
 
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
   width: 100%;
   height: 150px;
   background-color: var(--black_1);
 
   .title {
-    color: var(--gold_1);
+    cursor: pointer;
+    color: white;
     font-size: 18px;
+    margin-right: 20px;
+  }
+
+  .title:hover {
+    color: var(--gold_1);
+  }
+
+  .line {
+    width: 1.5px;
+    height: 50px;
+    background-color: var(--gold_1);
   }
 
   a {
     color: var(--text_Gray);
     font-size: 18px;
   }
-}</style>
+
+  a:hover {
+    color: var(--gold_1);
+  }
+}
+</style>

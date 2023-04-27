@@ -6,6 +6,16 @@ export const usePageData = defineStore({
     scorllUse: false,
   }),
   actions: {
-   
+    toTop(){
+      window.scrollTo(0, 0);
+      this.scorllUse = false
+    },
+    toTopSmooth(){
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+      this.scorllUse = false
+    }
   },
 });

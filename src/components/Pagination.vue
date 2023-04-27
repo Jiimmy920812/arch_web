@@ -1,5 +1,8 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
+import { usePageData } from '@/stores/pageData';
+const uPageData = usePageData();
+
 
 const emits = defineEmits(['page']);
 const props = defineProps({
@@ -47,22 +50,19 @@ const renderArr = computed(() => {
     return newArr;
 });
 
-function toTop() {
-    document.body.scrollTop = document.documentElement.scrollTop = 0;
-}
 
 </script>
 
 <template>
     <div class="el-pagination ">
         <ul class="el-pager">
-            <button class="numbrerBg" :disabled="currentPage === 1" @click="currentPage = 1, toTop()">
+            <button class="numbrerBg" :disabled="currentPage === 1" @click="currentPage = 1, uPageData.toTop()">
                 <div class="arrow left"></div>
             </button>
             <li v-for="pageNumber, index in renderArr" :key="index" :class="{ 'is-active': currentPage === pageNumber }"
-                class="numbrerBg" @click="(currentPage = pageNumber), toTop()" @keydown="fn">{{ pageNumber }}
+                class="numbrerBg" @click="(currentPage = pageNumber), uPageData.toTop()" @keydown="fn">{{ pageNumber }}
             </li>
-            <button class="numbrerBg" :disabled="currentPage === pageNum" @click="currentPage = pageNum, toTop()">
+            <button class="numbrerBg" :disabled="currentPage === pageNum" @click="currentPage = pageNum, uPageData.toTop()">
                 <div class="arrow right "></div>
             </button>
         </ul>

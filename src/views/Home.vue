@@ -9,11 +9,11 @@ const textArr = [
   {
     id: '1', text1: '取得珍貴土地、雲集頂尖建築團隊更是邁向新里程的第一步。', text2: "一切，只為了打造無愧土地情感與記憶", text3: '足以傳承品牌精神的理想建築'
   },
-  { id: '2', text1: '壯闊的外牆', text2: '是建築的點綴之美。', text3: '保護建築物不受損害' },
-  { id: '3', text1: '集合式建築', text2: '集合式建築，集合式建築。', text3: '集合式建築' },
+  { id: '2', text1: '壯闊的外牆', text2: '光線、風景、材料和細節，打造出寧靜與和諧的氛圍。', text3: '遇見建築的點綴之美。' },
+  { id: '3', text1: '材料美學，建築之魂', text2: '材料是建築的靈魂，選擇合適的建築材料至關重要。', text3: '細節中見真章，注重每一個細節。' },
   { id: '4', text1: '大器，藏於細節之中', text2: '無法言喻卻又無比清晰的工藝內涵', text3: '' },
-  { id: '5', text1: '漫天的雪白世界', text2: '漫天的雪白世界漫天的雪白世界，風景如畫。', text3: '最美的景致。' },
-  { id: '6', text1: '沙漠裡的跑車', text2: '跑車跑車跑車跑車跑車跑車跑車跑車跑車。', text3: '最美的景致。' },
+  { id: '5', text1: '', text2: '', text3: '' },
+  { id: '6', text1: '和風建築，融合自然', text2: '優雅而自然，和風建築體現了日本人對自然美的崇尚。', text3: '建築物整體美學對自然致敬。' },
 ]
 
 const handleNumber = (index) => {
@@ -104,12 +104,12 @@ function clickLine(index) {
       </div>
     </div>
     <div class="control">
-      <div class="textGround1" @click="prev">
+      <div class="textGround" @click="prev">
         <div class="arrow left"></div>
         <p class="text1">PREV</p>
       </div>
       <div class="line"></div>
-      <div class="textGround2" @click="next">
+      <div class="textGround" @click="next">
         <p class="text2">NEXT</p>
         <div class="arrow "></div>
       </div>
@@ -187,7 +187,7 @@ p {
 
 }
 
-.textGround1 {
+.textGround {
   width: 80px;
   justify-content: center;
   cursor: pointer;
@@ -195,7 +195,8 @@ p {
   align-items: center;
   gap: 10px;
 
-  .text1 {
+  .text1,
+  .text2 {
     font-size: 16px;
     color: white;
   }
@@ -213,51 +214,22 @@ p {
   }
 }
 
-
-.textGround2 {
-  width: 80px;
-  justify-content: center;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  .text2 {
-    font-size: 16px;
-    color: white;
-  }
-
-  .arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 7px 0 7px 7px;
-    border-color: transparent transparent transparent #ffffff;
-  }
-}
-
-
-
-
-.textGround1:hover .text1 {
+.textGround:hover .text1 {
+  transition: all 0.3s;
   color: var(--gold_1) !important;
   margin-left: 10px;
 }
 
-.textGround1:hover .left {
-  border-color: transparent transparent transparent var(--gold_1) !important;
-}
 
-.textGround2:hover .text2 {
+.textGround:hover .text2 {
+  transition: all 0.3s;
   margin-right: 10px;
   color: var(--gold_1) !important;
 }
 
-.textGround2:hover .arrow {
+.textGround:hover .arrow {
   border-color: transparent transparent transparent var(--gold_1) !important;
 }
-
-
 
 
 .lineControl {
@@ -299,5 +271,17 @@ p {
       color: white;
     }
   }
+}
+
+@media screen and (max-width:800px) {
+  .control {
+    display: none;
+  }
+
+  .lineControl {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
 }
 </style>

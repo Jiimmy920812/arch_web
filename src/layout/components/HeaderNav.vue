@@ -15,8 +15,12 @@ const props = defineProps({
 <template>
   <div class="headerNav" :class="{ topBg: props.isScroll }">
     <div class="logo">
-      <p class="title" :class="{ blackText: router.currentRoute.value.path !== '/', whiteText: props.isScroll }">建興建設</p>
-      <p class="subTitle" :class="{ blackText: router.currentRoute.value.path !== '/', whiteText: props.isScroll }">CHIEN
+      <p class="title"
+        :class="{ blackText: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteText: props.isScroll }">
+        建興建設</p>
+      <p class="subTitle"
+        :class="{ blackText: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteText: props.isScroll }">
+        CHIEN
         SHIH
         CO.,LTD</p>
     </div>

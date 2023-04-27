@@ -2,7 +2,8 @@
   --gold_1: #cc9b55;
   --line_Gray: #eaeaea;
   --text_Gray: #a1a1a1;
-  --black_1: #111
+  --black_1: #111;
+  --black_2: #1e2026;
 }
 
 * {
@@ -11,7 +12,6 @@
   border: none;
   box-sizing: none;
   font-family: 'Noto Serif HK', serif;
-  scroll-behavior: smooth;
 }
 
 .router-link-active {

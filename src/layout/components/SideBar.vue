@@ -47,15 +47,16 @@ function menuClick() {
 <template>
     <div class="menuGround">
         <p class="menuText"
-            :class="{ blackText: router.currentRoute.value.path !== '/', whiteText: isShow || props.isScroll }">M E N U</p>
+            :class="{ blackText: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteText: isShow || props.isScroll }">
+            M E N U</p>
         <div class="sideBarGround">
             <div class="menu" :class="{ 'active': isActive }" @click="menuClick">
                 <span
-                    :class="{ blackSpan: router.currentRoute.value.path !== '/', whiteSpan: isShow || props.isScroll }"></span>
+                    :class="{ blackSpan: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteSpan: isShow || props.isScroll }"></span>
                 <span
-                    :class="{ blackSpan: router.currentRoute.value.path !== '/', whiteSpan: isShow || props.isScroll }"></span>
+                    :class="{ blackSpan: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteSpan: isShow || props.isScroll }"></span>
                 <span
-                    :class="{ blackSpan: router.currentRoute.value.path !== '/', whiteSpan: isShow || props.isScroll }"></span>
+                    :class="{ blackSpan: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteSpan: isShow || props.isScroll }"></span>
             </div>
         </div>
 
@@ -71,7 +72,7 @@ function menuClick() {
                     <li class="inner3">
                         <div class="mainRouter">
                             <RouterLink to="/Tech" @click="menuClick">建興工學</RouterLink>
-                            <div class="icon" @click="isSemiRouter = true" :class="{ iconReverse: isSemiRouter }">
+                            <div class="icon" @click="isSemiRouter = !isSemiRouter" :class="{ iconReverse: isSemiRouter }">
                             </div>
                         </div>
                         <transition name="semiRouter-slide">
