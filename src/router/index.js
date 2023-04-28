@@ -1,4 +1,15 @@
 import { createRouter,createWebHashHistory } from 'vue-router'
+import Layout from '../layout/Layout.vue'
+import Home from '../views/Home.vue'
+import About from '../views/About.vue'
+import Tech from '../views/Tech.vue'
+import Tech_arch from '../views/Tech_arch.vue'
+import Tech_material from '../views/Tech_material.vue'
+import Tech_team from '../views/Tech_team.vue'
+import Introduce from '../views/Introduce.vue'
+import Contact from '../views/Contact.vue'
+
+
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -6,47 +17,47 @@ const router = createRouter({
     {
       path: '/layout',
       name: 'layout',
-      component: () => import('../layout/Layout.vue'),
+      component: Layout,
       children: [
         {
           path: '/',
           name: 'Home',
-          component: () => import('../views/Home.vue'),
+          component:Home,
         },
         {
           path: '/About',
           name: 'About',
-          component: () => import('../views/About.vue'),
+          component:About,
         },
         {
           path: '/Tech',
           name: 'Tech',
-          component: () => import('../views/Tech.vue'),
+          component:Tech,
         },
         {
           path: '/Tech_arch',
           name: 'Tech_arch',
-          component: () => import('../views/Tech_arch.vue'),
+          component: Tech_arch,
         },
         {
           path: '/Tech_material',
           name: 'Tech_material',
-          component: () => import('../views/Tech_material.vue'),
+          component: Tech_material,
         },
         {
           path: '/Tech_team',
           name: 'Tech_team',
-          component: () => import('../views/Tech_team.vue'),
+          component: Tech_team,
         },
         {
           path: '/Introduce',
           name: 'Introduce',
-          component: () => import('../views/Introduce.vue'),
+          component: Introduce,
         },
         {
           path: '/Contact',
           name: 'Contact',
-          component: () => import('../views/Contact.vue'),
+          component:Contact,
         },
       ]
     }

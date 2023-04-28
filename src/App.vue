@@ -1,5 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
+
+
 </script>
 
 <template>
@@ -8,6 +10,4 @@ import { RouterView } from 'vue-router'
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,4 +1,5 @@
 <script setup>
+
 import { ref, } from 'vue';
 import gsap from 'gsap'
 
@@ -88,19 +89,19 @@ function clickLine(index) {
   <div class="bg">
     <div class="carouselGround">
       <div class="carousel"
-        :style="{ backgroundImage: `url(${`../public/img/Home/home_page_${imageArr[0]}.jpg`})` }">
+        :style="{ backgroundImage: `url(${`img/Home/home_page_${imageArr[0]}.jpg`})` }">
         <p>{{ textArr[imageArr[0] - 1].text1 }}</p>
         <p>{{ textArr[imageArr[0] - 1].text2 }}</p>
         <p>{{ textArr[imageArr[0] - 1].text3 }}</p>
       </div>
       <div class="carousel"
-        :style="{ backgroundImage: `url(${`../public/img/Home/home_page_${imageArr[1]}.jpg`})` }">
+        :style="{ backgroundImage: `url(${`img/Home/home_page_${imageArr[1]}.jpg`})` }">
         <p>{{ textArr[imageArr[1] - 1].text1 }}</p>
         <p>{{ textArr[imageArr[1] - 1].text2 }}</p>
         <p>{{ textArr[imageArr[1] - 1].text3 }}</p>
       </div>
       <div class="carousel"
-        :style="{ backgroundImage: `url(${`../public/img/Home/home_page_${imageArr[2]}.jpg`})` }">
+        :style="{ backgroundImage: `url(${`img/Home/home_page_${imageArr[2]}.jpg`})` }">
         <p>{{ textArr[imageArr[2] - 1].text1 }}</p>
         <p>{{ textArr[imageArr[2] - 1].text2 }}</p>
         <p>{{ textArr[imageArr[2] - 1].text3 }}</p>
@@ -194,6 +195,7 @@ p {
   justify-content: center;
   cursor: pointer;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
 
