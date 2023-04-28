@@ -286,5 +286,9 @@ p {
     left: 50%;
     transform: translate(-50%, 0);
   }
-
-}</style>
+  p{
+    // text-align: center;
+    width: 70vw;
+  }
+}
+</style>

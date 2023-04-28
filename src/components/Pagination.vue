@@ -54,7 +54,6 @@ const renderArr = computed(() => {
 </script>
 
 <template>
-    <div class="el-pagination ">
         <ul class="el-pager">
             <button class="numbrerBg" :disabled="currentPage === 1" @click="currentPage = 1, uPageData.toTop()">
                 <div class="arrow left"></div>
@@ -66,10 +65,17 @@ const renderArr = computed(() => {
                 <div class="arrow right "></div>
             </button>
         </ul>
-    </div>
 </template>
 
 <style scoped lang="scss">
+
+.el-pager{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 button {
     background: none;
     cursor: pointer;

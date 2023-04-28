@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import Card_Plan from '../components/Card_Plan.vue'
+import Card_Tech from '../components/Card_Tech.vue'
 import pagination from '../components/Pagination.vue'
 import { usePageData } from '@/stores/pageData';
 const uPageData = usePageData();
@@ -101,13 +101,13 @@ const currentPageData = computed(() => {
 <template>
   <div class="TechBg">
     <div class="center" v-for="value, index in currentPageData" :key="index">
-      <Card_Plan :img="value.img" :verticalText='value.verticalText' :title='value.title' :date="value.date"
+      <Card_Tech :img="value.img" :verticalText='value.verticalText' :title='value.title' :date="value.date"
         :content="value.content" />
     </div>
     <div class="pagination center">
       <pagination :currentPage="page" :dataTotal="cardArrType.length" :pageSize="pageSize" @page="getPage" />
     </div>
-    <div class="footer">
+    <div class="tech_footer">
       <p @click="uPageData.toTop">
         <RouterLink class="title" to="/Tech">所有文章</RouterLink>
       </p><span class="line"></span>
@@ -124,7 +124,7 @@ const currentPageData = computed(() => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .TechBg {
   margin-top: 150px;
 }
@@ -132,13 +132,16 @@ const currentPageData = computed(() => {
 .pagination {
   width: 100%;
   height: 300px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.footer {
+.tech_footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 5vw;
   width: 100%;
   height: 150px;
   background-color: var(--black_1);
@@ -167,6 +170,18 @@ const currentPageData = computed(() => {
 
   a:hover {
     color: var(--gold_1);
+  }
+}
+
+@media screen and (max-width:550px) {
+  .tech_footer {
+    a {
+      font-size: 14px;
+    }
+
+    .title {
+      font-size: 14px;
+    }
   }
 }
 </style>

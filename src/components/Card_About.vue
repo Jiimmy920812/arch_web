@@ -81,12 +81,13 @@ const props = defineProps({
 }
 
 .imgBg {
-    width: 458px;
+    width: 350px;
     height: auto;
 
     img {
         width: 100%;
         height: 100%;
+        object-fit: contain;
     }
 }
 
@@ -105,6 +106,7 @@ const props = defineProps({
 
     .title {
         font-size: 28px;
+        text-align: left;
     }
 
     .content {
@@ -124,10 +126,53 @@ const props = defineProps({
 }
 
 .verticalText_right {
-    left: 485px;
+    left: 370px;
 }
 
 .textBg_right {
     align-items: end;
+}
+
+
+@media screen and (max-width:1000px) {
+    .textGround {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .cardBg {
+        flex-direction: column;
+    }
+
+    .photoGround {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .verticalText_right {
+        left: -25px;
+    }
+
+    .imgBg {
+        width: 230px;
+    }
+
+    .verticalText {
+        letter-spacing: 5px;
+    }
+
+    .textGround {
+        .title {
+            font-size: 18px;
+        }
+        .content{
+            font-size: 14px;
+        }
+    }
+
+
+
 }
 </style>

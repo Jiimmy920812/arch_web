@@ -210,7 +210,7 @@ function menuClick() {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    margin: 20px;
+    margin-left: 20px;
 }
 
 .menu span {
@@ -251,6 +251,22 @@ function menuClick() {
 .semiRouter-slide-leave-to {
     transform: translateY(-20px);
     opacity: 0;
+}
+
+@media screen and (max-width:800px) {
+    .menu {
+        margin-right: -20px;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+   .menuGround {
+    width:100vw
+   }
+   .hamburgerMenu{
+    width:100vw
+   } 
 }
 </style>
 

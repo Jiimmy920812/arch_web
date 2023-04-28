@@ -58,12 +58,12 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .cardBg {
-    padding: 89px;
+    padding: 5rem;
     width: 80%;
     height: 100%;
     display: flex;
     flex-direction: row;
-    gap: 160px;
+    gap: 8vw;
     border-bottom: 1px solid var(--line_Gray);
 }
 
@@ -79,7 +79,7 @@ const props = defineProps({
 .verticalText {
     color: gray;
     position: absolute;
-    width: 500px;
+    width: 20rem;
     text-align: center;
     top: 50%;
     left: -25px;
@@ -100,6 +100,7 @@ const props = defineProps({
 
 
 .textBg {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -114,7 +115,7 @@ const props = defineProps({
     gap: 15px;
 
     .title {
-        width: 500px;
+        width: 100%;
         font-size: 28px;
     }
 
@@ -161,5 +162,41 @@ const props = defineProps({
 
 .more:hover {
     background-color: var(--black_1);
+}
+
+@media screen and (max-width:1000px) {
+    .cardBg {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+@media screen and (max-width:550px) {
+    .imgBg {
+        width: 350px;
+    }
+
+    .textGround {
+        .title {
+            font-size: 20px;
+        }
+
+        .content {
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (max-width:620px) {
+    .imgBg {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .imgBg {
+        width: 250px;
+    }
 }
 </style>

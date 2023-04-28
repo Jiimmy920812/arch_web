@@ -1,5 +1,5 @@
 <script setup>
-import Card from '../components/Card.vue'
+import Card_About from '../components/Card_About.vue'
 const cardArr = [
   {
     position_right: false,
@@ -61,19 +61,19 @@ const planImg = [
         只為成就幸福生活</p>
     </div>
     <div class="section2 center" v-for="value, index in cardArr" :key="index">
-      <Card :position_right="value.position_right" :img="value.img" :verticalText='value.verticalText'
+      <Card_About :position_right="value.position_right" :img="value.img" :verticalText='value.verticalText'
         :title='value.title' :content="value.content" />
     </div>
     <div class="section3">
       <div class="line"></div>
-      <p>初衷，未滅。我們很清楚，譁眾取寵的房子並非永續之路；我們一致追求，在無可取代的地段 佇立著內涵文化底蘊的外觀-仰德式建築。</p>
+      <p >初衷，未滅。我們很清楚，譁眾取寵的房子並非永續之路；我們一致追求，在無可取代的地段 佇立著內涵文化底蘊的外觀-仰德式建築。</p>
     </div>
     <div class="section4 center">
       <div class="imgBg" :key="index" v-for="img, index in planImg">
         <img :src="img" alt="">
       </div>
       <div class="textGround">
-        <p>身、心、靈、的生活感受發想於堅實建築的錨點<br>
+        <p class="footer_text">身、心、靈、的生活感受發想於堅實建築的錨點<br>
           完美創作與貼切創意規劃，賦予建築舒適、溫馨、享受的生命體<br>
           讓建築最終呈現在時代的特色與人文生活的結合
         </p>
@@ -102,7 +102,7 @@ const planImg = [
 
   .line {
     height: 1.5px;
-    width: 500px;
+    width: 70vw;
     background-color: var(--line_Gray);
   }
 
@@ -113,6 +113,7 @@ const planImg = [
   }
 
   .textGround {
+    width: 100%;
     text-align: center;
     flex-direction: column;
     line-height: 2;
@@ -129,17 +130,17 @@ const planImg = [
   background-image: url('../../public/img/menu-line.png');
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 30px;
   gap: 20px;
 
   p {
-    font-size: 18px;
+    font-size: 16px;
     width: 85%;
     color: white
   }
 
   .line {
-    margin-left: 100px;
     width: 1.5px;
     height: 100%;
     background-color: var(--gold_1);
@@ -152,7 +153,7 @@ const planImg = [
   height: 60%;
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 1rem;
 
   .imgBg {
     margin: 0.5%;
@@ -184,6 +185,18 @@ const planImg = [
       }
     }
   }
+}
 
+@media screen and (max-width:550px) {
+
+  .footer_text {
+    font-size: 14px;
+  }
+
+  .section3 {
+    p {
+      font-size: 14px;
+    }
+  }
 }
 </style>

@@ -23,7 +23,7 @@
           <textarea class="textarea" name="" id="" cols="30" rows="10" placeholder="留言訊息*"></textarea>
         </div>
         <div class="row row_center">
-          <button>確認送出</button>
+          <button class="confirm_btn">確認送出</button>
         </div>
       </div>
     </div>
@@ -48,8 +48,8 @@
   </div>
 </template>
 
-<style lang="scss">
-button {
+<style lang="scss" scoped>
+.confirm_btn {
   cursor: pointer;
   margin-top: 30px;
   width: 140px;
@@ -60,7 +60,7 @@ button {
   color: white;
 }
 
-button:hover {
+.confirm_btn:hover {
   background-color: var(--black_1);
 }
 
