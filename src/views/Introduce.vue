@@ -11,39 +11,39 @@ const modules = [Mousewheel, Pagination]
 
 const introduceArr = [
   {
-    img_1: "src/assets/img/plan/plan_1.jpg",
+    img_1: "../../public/img/plan/plan_1.jpg",
     title_1: "建興-駁二",
     content_1: '',
-    img_2: "src/assets/img/plan/plan_2.jpg",
+    img_2: "../../public/img/plan/plan_2.jpg",
     title_2: "建興-絜",
     content_2: '陽明學區 文山特區',
   },
   {
-    img_1: "src/assets/img/plan/plan_3.jpg",
+    img_1: "../../public/img/plan/plan_3.jpg",
     title_1: "建興-文",
     content_1: '',
-    img_2: "src/assets/img/plan/plan_4.jpg",
+    img_2: "../../public/img/plan/plan_4.jpg",
     title_2: "建興-漾",
     content_2: '美術館海景第一排',
   },
   {
-    img_1: "src/assets/img/plan/plan_5.jpg",
+    img_1: "../../public/img/plan/plan_5.jpg",
     title_1: "建興-昕",
     content_1: '',
-    img_2: "src/assets/img/plan/plan_6.jpg",
+    img_2: "../../public/img/plan/plan_6.jpg",
     title_2: "建興-玄碩",
     content_2: '前鎮軟體園區',
   },
   {
-    img_1: "src/assets/img/plan/plan_7.jpg",
+    img_1: "../../public/img/plan/plan_7.jpg",
     title_1: "建興-悅界",
     content_1: '高雄新灣區',
-    img_2: "src/assets/img/plan/plan_8.jpg",
+    img_2: "../../public/img/plan/plan_8.jpg",
     title_2: "建興-望海",
     content_2: '愛河左岸旁',
   },
   {
-    img_1: "src/assets/img/plan/plan_9.jpg",
+    img_1: "../../public/img/plan/plan_9.jpg",
     title_1: "建興-湛參庫",
     content_1: '',
   }
@@ -53,7 +53,7 @@ const introduceArr = [
 </script>
 
 <template>
-  <swiper :direction="'vertical'" :slidesPerView="1"  :mousewheel="true" :pagination="{
+  <swiper :direction="'vertical'" :slidesPerView="1" :mousewheel="true" :pagination="{
       clickable: true,
     }" :modules="modules" class="mySwiper">
 

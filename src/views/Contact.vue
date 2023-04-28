@@ -60,8 +60,8 @@ button {
   color: white;
 }
 
-button:hover{
-    background-color: var(--black_1);
+button:hover {
+  background-color: var(--black_1);
 }
 
 
@@ -70,7 +70,7 @@ button:hover{
 .mainImg {
   width: 100%;
   height: 80vh;
-  background-image: url('../assets/img/Contact/contact_main.jpeg');
+  background-image: url('../../public/img/Contact/contact_main.jpeg');
 }
 
 .menuBg {
@@ -157,7 +157,7 @@ button:hover{
   width: 100%;
   height: 150px;
   background-color: var(--black_1);
-  background-image: url(../assets/img/menu-line.png);
+  background-image: url("../../public/img/menu-line.png");
 
   .iconGround {
     display: flex;
@@ -178,19 +178,19 @@ button:hover{
     }
 
     .icon_tel {
-      background-image: url('../assets/img/Contact/icons8-phone-50.png');
+      background-image: url('../../public/img/Contact/icons8-phone-50.png');
     }
 
     .icon_location {
-      background-image: url('../assets/img/Contact/icons8-location-30.png');
+      background-image: url('../../public/img/Contact/icons8-location-30.png');
     }
 
     .icon_mail {
-      background-image: url('../assets/img/Contact/icons8-email-30.png');
+      background-image: url('../../public/img/Contact/icons8-email-30.png');
     }
 
     .icon_line {
-      background-image: url('../assets/img/Contact/contact-line.png');
+      background-image: url('../../public/img/Contact/contact-line.png');
     }
   }
 }

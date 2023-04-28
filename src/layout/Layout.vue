@@ -53,7 +53,7 @@ function handleScroll() {
   position: absolute;
   top: 0px;
   right: 0px;
-  z-index: 7
+  z-index: 50
 }
 
 header {

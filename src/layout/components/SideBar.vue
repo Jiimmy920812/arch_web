@@ -152,7 +152,7 @@ function menuClick() {
         width: 450px;
         height: 100vh;
         background-color: var(--black_1);
-        background-image: url('../../assets/img/menu-line.png');
+        background-image: url('../../../public/img/menu-line.png');
         list-style: none;
         z-index: 3;
         opacity: 0.8;

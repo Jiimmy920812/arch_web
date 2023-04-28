@@ -132,7 +132,7 @@ const props = defineProps({
     .dateIcon {
         width: 20px;
         height: 20px;
-        background-image: url('../assets/icons8-calendar-50.png');
+        background-image: url('../../public/img/icons8-calendar-50.png');
     }
 
     .content {
@@ -141,7 +141,8 @@ const props = defineProps({
         text-align: start;
         color: gray;
     }
-    .more{
+
+    .more {
         cursor: pointer;
         width: 140px;
         height: 50px;
@@ -153,13 +154,12 @@ const props = defineProps({
 }
 
 
-.title:hover{
+.title:hover {
     cursor: pointer;
     color: var(--gold_1);
 }
 
-.more:hover{
+.more:hover {
     background-color: var(--black_1);
 }
-
 </style>

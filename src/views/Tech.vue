@@ -21,7 +21,7 @@ const type = ref(props.type)
 const cardArr = [
   {
     type: 'arch',
-    img: "src/assets/img/Tech/Tech_arch_1.jpg",
+    img: "../../public/img/Tech/Tech_arch_1.jpg",
     verticalText: '建築工法',
     title: "高雄厝綠建築",
     date: '2021-10-28',
@@ -29,7 +29,7 @@ const cardArr = [
   },
   {
     type: 'team',
-    img: "src/assets/img/Tech/Tech_team_1.jpg",
+    img: "../../public/img/Tech/Tech_team_1.jpg",
     verticalText: '建興團隊',
     title: "匯聚頂尖名師，成就永續建築",
     date: '2021-08-16',
@@ -37,7 +37,7 @@ const cardArr = [
   },
   {
     type: 'material',
-    img: "src/assets/img/Tech/Tech_material_1.jpg",
+    img: "../../public/img/Tech/Tech_material_1.jpg",
     verticalText: '嚴選建材',
     title: "德國DUKER鑄鐵管",
     date: '2021-09-13',
@@ -45,7 +45,7 @@ const cardArr = [
   },
   {
     type: 'material',
-    img: "src/assets/img/Tech/Tech_material_2.jpg",
+    img: "../../public/img/Tech/Tech_material_2.jpg",
     verticalText: '嚴選建材',
     title: "嚴選建材日本YKK AP氣密窗",
     date: '2021-08-16',
@@ -53,7 +53,7 @@ const cardArr = [
   },
   {
     type: 'material',
-    img: "src/assets/img/Tech/Tech_material_3.jpg",
+    img: "../../public/img/Tech/Tech_material_3.jpg",
     verticalText: '嚴選建材',
     title: "日本住友(SUMITOMO)制震器",
     date: '2021-08-09',
@@ -61,7 +61,7 @@ const cardArr = [
   },
   {
     type: 'material',
-    img: "src/assets/img/Tech/Tech_material_4.jpg",
+    img: "../../public/img/Tech/Tech_material_4.jpg",
     verticalText: '嚴選建材',
     title: "加拿大DURA隔音墊",
     date: '2021-08-09',
@@ -69,7 +69,7 @@ const cardArr = [
   },
   {
     type: 'material',
-    img: "src/assets/img/Tech/Tech_material_5.jpg",
+    img: "../../public/img/Tech/Tech_material_5.jpg",
     verticalText: '嚴選建材',
     title: "荷蘭Poll-tex® 普特絲防霾透氣紗網",
     date: '2021-07-22',

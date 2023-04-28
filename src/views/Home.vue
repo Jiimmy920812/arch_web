@@ -87,17 +87,20 @@ function clickLine(index) {
 <template>
   <div class="bg">
     <div class="carouselGround">
-      <div class="carousel" :style="{ backgroundImage: `url(${`src/assets/img/home_page_${imageArr[0]}.jpg`})` }">
+      <div class="carousel"
+        :style="{ backgroundImage: `url(${`../public/img/Home/home_page_${imageArr[0]}.jpg`})` }">
         <p>{{ textArr[imageArr[0] - 1].text1 }}</p>
         <p>{{ textArr[imageArr[0] - 1].text2 }}</p>
         <p>{{ textArr[imageArr[0] - 1].text3 }}</p>
       </div>
-      <div class="carousel" :style="{ backgroundImage: `url(${`src/assets/img/home_page_${imageArr[1]}.jpg`})` }">
+      <div class="carousel"
+        :style="{ backgroundImage: `url(${`../public/img/Home/home_page_${imageArr[1]}.jpg`})` }">
         <p>{{ textArr[imageArr[1] - 1].text1 }}</p>
         <p>{{ textArr[imageArr[1] - 1].text2 }}</p>
         <p>{{ textArr[imageArr[1] - 1].text3 }}</p>
       </div>
-      <div class="carousel" :style="{ backgroundImage: `url(${`src/assets/img/home_page_${imageArr[2]}.jpg`})` }">
+      <div class="carousel"
+        :style="{ backgroundImage: `url(${`../public/img/Home/home_page_${imageArr[2]}.jpg`})` }">
         <p>{{ textArr[imageArr[2] - 1].text1 }}</p>
         <p>{{ textArr[imageArr[2] - 1].text2 }}</p>
         <p>{{ textArr[imageArr[2] - 1].text3 }}</p>
@@ -163,7 +166,6 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('../assets/img/home_page_1.jpg');
 
   p {
     margin-top: 15px;
@@ -283,5 +285,4 @@ p {
     transform: translate(-50%, 0);
   }
 
-}
-</style>
+}</style>
