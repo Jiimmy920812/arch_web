@@ -29,12 +29,12 @@ const props = defineProps({
 
 <template>
     <main>
-        <div class="photoSize bgSetting center">
+        <div class="photoSize center">
             <div class="photo center" :style="{ backgroundImage: `url(${`${props.img_1}`})` }"></div>
             <p class="text">{{ props.title_1 }}</p>
             <p class="text_content">{{ props.content_1 }}</p>
         </div>
-        <div class="photoSize bgSetting center">
+        <div class="photoSize  center">
             <div class="photo center" :style="{ backgroundImage: `url(${`${props.img_2}`})` }"></div>
             <p class="text">{{ props.title_2 }}</p>
             <p class="text_content">{{ props.content_2 }}</p>
@@ -49,19 +49,21 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 6vw;
 }
 
 .photoSize {
     flex-direction: column;
     position: relative;
     cursor: pointer;
-    width: 610px;
-    height: 500px;
+    width: 35vw;
+    height: 30vw;
     border: 4px double #eab76e;
 }
 
 .photo {
+    background-size: cover;
+    background-repeat: no-repeat;
     position: absolute;
     opacity: 0.2;
     width: 100%;
@@ -99,5 +101,24 @@ main {
 .photoSize:hover .text_content {
     transition: all 0.5s;
     opacity: 0;
+}
+
+@media screen and (max-width:880px) {
+    .text {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width:700px) {
+    main {
+        flex-direction: column;
+    }
+
+    .photoSize {
+        width: 38vw;
+        height: 30vw;
+    }
+
+
 }
 </style>

@@ -169,6 +169,11 @@ const props = defineProps({
         flex-direction: column;
         align-items: center;
     }
+
+    .textGround {
+        width: 100%;
+    }
+
 }
 
 
@@ -192,6 +197,10 @@ const props = defineProps({
     .imgBg {
         width: 400px;
     }
+
+    .cardBg {
+        padding:50px 0px ;
+    }
 }
 
 @media screen and (max-width:550px) {
@@ -199,4 +208,11 @@ const props = defineProps({
         width: 250px;
     }
 }
-</style>
+
+@media screen and (max-width:420px) {
+    .verticalText {
+        width: 300px;
+        transform: none;
+        top: -30px;
+    }
+}</style>

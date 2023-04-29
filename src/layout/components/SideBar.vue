@@ -138,7 +138,7 @@ function menuClick() {
     position: absolute;
     top: 0px;
     right: 0px;
-    width: 450px;
+    width: 100%;
     height: 100vh;
     overflow: hidden;
     z-index: -4;
@@ -149,7 +149,7 @@ function menuClick() {
         position: absolute;
         flex-direction: column;
         align-items: start;
-        width: 450px;
+        width: 100%;
         height: 100vh;
         background-color: var(--black_1);
         background-image: url('../../../public/img/menu-line.png');
@@ -261,12 +261,9 @@ function menuClick() {
 }
 
 @media screen and (max-width:500px) {
-   .menuGround {
-    width:100vw
-   }
-   .hamburgerMenu{
-    width:100vw
-   } 
+    .menuGround {
+        width: 100vw;
+    }
 }
 </style>
 

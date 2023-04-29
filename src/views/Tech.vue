@@ -150,7 +150,7 @@ const currentPageData = computed(() => {
     cursor: pointer;
     color: white;
     font-size: 18px;
-    margin-right: 20px;
+    // margin-right: 20px;
   }
 
   .title:hover {
@@ -159,7 +159,7 @@ const currentPageData = computed(() => {
 
   .line {
     width: 1.5px;
-    height: 50px;
+    height: 5vw;
     background-color: var(--gold_1);
   }
 
@@ -184,4 +184,11 @@ const currentPageData = computed(() => {
     }
   }
 }
+
+@media screen and (max-width:420px) {
+  .tech_footer {
+   gap: 10px;
+  }
+}
+
 </style>
