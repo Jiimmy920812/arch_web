@@ -116,13 +116,14 @@ function menuClick() {
 .menuGround {
     position: fixed;
     justify-content: end;
-    padding-right: 50px;
+    padding-right: 5%;
     top: 0;
     right: 0;
     height: 100px;
     width: 450px;
     display: flex;
     align-items: center;
+    gap: 15px;
 
     .menuText {
         font-size: 20px;
@@ -210,7 +211,6 @@ function menuClick() {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    margin-left: 20px;
 }
 
 .menu span {
@@ -253,12 +253,7 @@ function menuClick() {
     opacity: 0;
 }
 
-@media screen and (max-width:800px) {
-    .menu {
-        margin-right: -20px;
-    }
 
-}
 
 @media screen and (max-width:500px) {
     .menuGround {

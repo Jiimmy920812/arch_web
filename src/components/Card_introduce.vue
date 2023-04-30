@@ -1,45 +1,27 @@
 <script setup>
 const props = defineProps({
-    img_1: {
+    img: {
         type: String,
         default: '',
     },
-    title_1: {
+    title: {
         type: String,
         default: '籌備中',
     },
-    content_1: {
+    content: {
         type: String,
         default: '',
     },
-    img_2: {
-        type: String,
-        default: '',
-    },
-    title_2: {
-        type: String,
-        default: '',
-    },
-    content_2: {
-        type: String,
-        default: '',
-    }
 })
 </script>
 
 <template>
     <main>
         <div class="photoSize center">
-            <div class="photo center" :style="{ backgroundImage: `url(${`${props.img_1}`})` }"></div>
-            <p class="text">{{ props.title_1 }}</p>
-            <p class="text_content">{{ props.content_1 }}</p>
+            <div class="photo center" :style="{ backgroundImage: `${props.img}` }"></div>
+            <p class="text">{{ props.title }}</p>
+            <p class="text_content">{{ props.content }}</p>
         </div>
-        <div class="photoSize  center">
-            <div class="photo center" :style="{ backgroundImage: `url(${`${props.img_2}`})` }"></div>
-            <p class="text">{{ props.title_2 }}</p>
-            <p class="text_content">{{ props.content_2 }}</p>
-        </div>
-
     </main>
 </template>
 
@@ -56,8 +38,8 @@ main {
     flex-direction: column;
     position: relative;
     cursor: pointer;
-    width: 35vw;
-    height: 30vw;
+    width: 55vw;
+    height: 46vw;
     border: 4px double #eab76e;
 }
 
@@ -103,22 +85,18 @@ main {
     opacity: 0;
 }
 
+@media screen and (max-width:600px) {
+    .photoSize {
+        width: 60vw;
+        height: 50vw;
+    }
+}
+
 @media screen and (max-width:880px) {
     .text {
         font-size: 40px;
     }
 }
 
-@media screen and (max-width:700px) {
-    main {
-        flex-direction: column;
-    }
 
-    .photoSize {
-        width: 38vw;
-        height: 30vw;
-    }
-
-
-}
 </style>

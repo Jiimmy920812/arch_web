@@ -1,49 +1,112 @@
 <script setup>
+import { ref, watch } from 'vue';
 import Card_introduce from '../components/Card_introduce.vue'
+import Card_introduce_row from '../components/Card_introduce_row.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import { Mousewheel, Pagination } from 'swiper';
 
 const modules = [Mousewheel, Pagination]
+const isShow = ref(false)
+const resizewidth = ref(null)
+const screenWidth = ref(document.documentElement.clientWidth);
 
+window.onresize = function () {
+  resizewidth.value = window.innerWidth;
+};
+
+watch(() => [resizewidth.value, screenWidth.value], () => {
+  console.log(screenWidth.value, '螢幕寬');
+  if (resizewidth.value < 900 || screenWidth.value < 900) isShow.value = false
+  if (resizewidth.value > 900 || resizewidth.value < 400 || screenWidth.value > 900 || screenWidth.value < 400) isShow.value = true
+})
 
 
 const introduceArr = [
   {
-    img_1: "img/plan/plan_1.jpg",
+    img: "url('../../public/img/plan/plan_1.jpg')",
+    title: "建興-駁二",
+    content: '',
+  },
+  {
+    img: "url('../../public/img/plan/plan_2.jpg')",
+    title: "建興-絜",
+    content: '陽明學區 文山特區',
+  },
+  {
+    img: "url('../../public/img/plan/plan_3.jpg')",
+    title: "建興-文",
+    content: '',
+  },
+  {
+    img: "url('../../public/img/plan/plan_4.jpg')",
+    title: "建興-漾",
+    content: '美術館海景第一排',
+  },
+  {
+    img: "url('../../public/img/plan/plan_5.jpg')",
+    title: "建興-昕",
+    content: '',
+  },
+  {
+    img: "url('../../public/img/plan/plan_6.jpg')",
+    title: "建興-玄碩",
+    content: '前鎮軟體園區',
+  },
+  {
+    img: "url('../../public/img/plan/plan_7.jpg')",
+    title: "建興-悅界",
+    content: '高雄新灣區',
+  },
+  {
+    img: "url('../../public/img/plan/plan_8.jpg')",
+    title: "建興-望海",
+    content: '愛河左岸旁',
+  },
+  {
+    img: "url('../../public/img/plan/plan_9.jpg')",
+    title: "建興-湛參庫",
+    content: '',
+  }
+]
+
+
+const introduceArr_row = [
+  {
+    img_1: "url('../../public/img/plan/plan_1.jpg')",
     title_1: "建興-駁二",
     content_1: '',
-    img_2: "img/plan/plan_2.jpg",
+    img_2: "url('../../public/img/plan/plan_2.jpg')",
     title_2: "建興-絜",
     content_2: '陽明學區 文山特區',
   },
   {
-    img_1: "img/plan/plan_3.jpg",
+    img_1: "url('../../public/img/plan/plan_3.jpg')",
     title_1: "建興-文",
     content_1: '',
-    img_2: "img/plan/plan_4.jpg",
+    img_2: "url('../../public/img/plan/plan_4.jpg')",
     title_2: "建興-漾",
     content_2: '美術館海景第一排',
   },
   {
-    img_1: "img/plan/plan_5.jpg",
+    img_1: "url('../../public/img/plan/plan_5.jpg')",
     title_1: "建興-昕",
     content_1: '',
-    img_2: "img/plan/plan_6.jpg",
+    img_2: "url('../../public/img/plan/plan_6.jpg')",
     title_2: "建興-玄碩",
     content_2: '前鎮軟體園區',
   },
   {
-    img_1: "img/plan/plan_7.jpg",
+    img_1: "url('../../public/img/plan/plan_7.jpg')",
     title_1: "建興-悅界",
     content_1: '高雄新灣區',
-    img_2: "img/plan/plan_8.jpg",
+    img_2: "url('../../public/img/plan/plan_8.jpg')",
     title_2: "建興-望海",
     content_2: '愛河左岸旁',
   },
   {
-    img_1: "img/plan/plan_9.jpg",
+    img_1: "url('../../public/img/plan/plan_9.jpg')",
     title_1: "建興-湛參庫",
     content_1: '',
   }
@@ -57,10 +120,16 @@ const introduceArr = [
       clickable: true,
     }" :modules="modules" class="mySwiper">
 
-    <swiper-slide v-for="v, index in introduceArr" :key="index">
-      <Card_introduce :img_1="v.img_1" :title_1="v.title_1" :content_1="v.content_1" :img_2="v.img_2" :title_2="v.title_2"
-        :content_2="v.content_2" />
+    <swiper-slide v-if="isShow" v-for="v, index in introduceArr_row" :key="index">
+      <Card_introduce_row :img_1="v.img_1" :title_1="v.title_1" :content_1="v.content_1" :img_2="v.img_2"
+        :title_2="v.title_2" :content_2="v.content_2" />
     </swiper-slide>
+
+    <swiper-slide v-if="!isShow" class="introduceArr" v-for="v, index in introduceArr" :key="index">
+      <Card_introduce :img="v.img" :title="v.title" :content="v.content" />
+    </swiper-slide>
+
+
   </swiper>
   <div class="footer">
     <p>
@@ -118,7 +187,7 @@ const introduceArr = [
 
 
 .footer {
-  gap: 100px;
+  gap: 10vw;
   position: fixed;
   bottom: 0px;
   width: 100%;
@@ -138,5 +207,16 @@ const introduceArr = [
   a:hover {
     color: white;
   }
+}
+
+
+@media screen and (max-width:500px) {
+  .footer {
+    a {
+      letter-spacing: 3px;
+      font-size: 14px;
+    }
+  }
+
 }
 </style>

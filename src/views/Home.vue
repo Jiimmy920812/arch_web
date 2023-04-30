@@ -1,28 +1,15 @@
 <script setup>
-
-import { ref, } from 'vue';
+import { ref } from 'vue';
 import gsap from 'gsap'
 
-const imageArr = ref([6, 1, 2])
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
+import { Mousewheel, Pagination, } from 'swiper';
+
+const modules = [Mousewheel, Pagination,]
+
 const imageID = ref(0)
-
-const textArr = [
-  {
-    id: '1', text1: '取得珍貴土地、雲集頂尖建築團隊更是邁向新里程的第一步。', text2: "一切，只為了打造無愧土地情感與記憶", text3: '足以傳承品牌精神的理想建築'
-  },
-  { id: '2', text1: '壯闊的外牆', text2: '光線、風景、材料和細節，打造出寧靜與和諧的氛圍。', text3: '遇見建築的點綴之美。' },
-  { id: '3', text1: '材料美學，建築之魂', text2: '材料是建築的靈魂，選擇合適的建築材料至關重要。', text3: '細節中見真章，注重每一個細節。' },
-  { id: '4', text1: '大器，藏於細節之中', text2: '無法言喻卻又無比清晰的工藝內涵', text3: '' },
-  { id: '5', text1: '', text2: '', text3: '' },
-  { id: '6', text1: '和風建築，融合自然', text2: '優雅而自然，和風建築體現了日本人對自然美的崇尚。', text3: '建築物整體美學對自然致敬。' },
-]
-
-const handleNumber = (index) => {
-  if (index > 6) return 1
-  if (index < 1) return 6
-  return index
-}
-
 function currentPageAnimate() {
   if (!gsap.isTweening('#currentPage')) {
     gsap.from('#currentPage', { duration: 0.2, y: 20, opacity: 0 })
@@ -30,107 +17,107 @@ function currentPageAnimate() {
   }
 }
 
+//自訂義swiper函數
+const swiperInstance = ref()
+function onSwiper(swiper) {
+  swiperInstance.value = swiper
+}
 
+//切頁執行fn
+function onSlideChange() {
+  imageID.value = swiperInstance.value.activeIndex
+  currentPageAnimate()
+}
+
+
+function next() {
+  swiperInstance.value.slideNext()
+  currentPageAnimate()
+}
 
 function prev() {
-  if (!gsap.isTweening(".carouselGround")) {
-    currentPageAnimate()
-    imageID.value--
-    if (imageID.value < 0) imageID.value = textArr.length - 1
-    gsap.from('.carouselGround', { duration: 1.5, x: 0, })
-    gsap.to('.carouselGround', {
-      duration: 1.5, x: window.innerWidth, onComplete: function () {
-        for (let i = 0; i < imageArr.value.length; i++) {
-          imageArr.value[i]--;
-          if (imageArr.value[i] < 1) {
-            imageArr.value[i] = 6
-          }
-        }
-        gsap.set(".carouselGround", { x: 0, });
-      }
-    })
-  }
-}
-function next() {
-  if (!gsap.isTweening(".carouselGround")) {
-    currentPageAnimate()
-    imageID.value++
-    if (imageID.value > textArr.length - 1) imageID.value = 0
-    gsap.from('.carouselGround', { duration: 1.5, x: 0, })
-    gsap.to('.carouselGround', {
-      duration: 1.5, x: -window.innerWidth, onComplete: function () {
-        for (let i = 0; i < imageArr.value.length; i++) {
-          imageArr.value[i]++;
-          if (imageArr.value[i] > 6) {
-            imageArr.value[i] = 1
-          }
-        }
-        gsap.set(".carouselGround", { x: 0, });
-      }
-    })
-  }
-}
-
-
-
-
-function clickLine(index) {
+  swiperInstance.value.slidePrev()
   currentPageAnimate()
-  imageID.value = index
-  imageArr.value[0] = handleNumber(index)
-  imageArr.value[1] = handleNumber(index + 1)
-  imageArr.value[2] = handleNumber(index + 2)
 }
+
+const homeArr = [
+  {
+    id: '1',
+    text1: '取得珍貴土地、雲集頂尖建築團隊更是邁向新里程的第一步。',
+    text2: "一切，只為了打造無愧土地情感與記憶",
+    text3: '足以傳承品牌精神的理想建築',
+    img: `url(img/Home/home_page_1.jpg)`
+  },
+  {
+    id: '2',
+    text1: '壯闊的外牆',
+    text2: '光線、風景、材料和細節，打造出寧靜與和諧的氛圍。',
+    text3: '遇見建築的點綴之美。',
+    img: `url(img/Home/home_page_2.jpg)`
+  },
+  {
+    id: '3',
+    text1: '材料美學，建築之魂',
+    text2: '材料是建築的靈魂，選擇合適的建築材料至關重要。',
+    text3: '細節中見真章，注重每一個細節。',
+    img: `url(img/Home/home_page_3.jpg)`
+  },
+  {
+    id: '4',
+    text1: '大器，藏於細節之中',
+    text2: '無法言喻卻又無比清晰的工藝內涵',
+    text3: '',
+    img: `url(img/Home/home_page_4.jpg)`
+  },
+  {
+    id: '5',
+    text1: '',
+    text2: '',
+    text3: '',
+    img: `url(img/Home/home_page_5.jpg)`
+  },
+  {
+    id: '6',
+    text1: '和風建築，融合自然',
+    text2: '優雅而自然，和風建築體現了日本人對自然美的崇尚。',
+    text3: '建築物整體美學對自然致敬。',
+    img: `url(img/Home/home_page_6.jpg)`
+  },
+]
+
 
 </script>
 
 
 <template>
   <div class="bg">
-    <div class="carouselGround">
-      <div class="carousel"
-        :style="{ backgroundImage: `url(${`img/Home/home_page_${imageArr[0]}.jpg`})` }">
-        <p>{{ textArr[imageArr[0] - 1].text1 }}</p>
-        <p>{{ textArr[imageArr[0] - 1].text2 }}</p>
-        <p>{{ textArr[imageArr[0] - 1].text3 }}</p>
-      </div>
-      <div class="carousel"
-        :style="{ backgroundImage: `url(${`img/Home/home_page_${imageArr[1]}.jpg`})` }">
-        <p>{{ textArr[imageArr[1] - 1].text1 }}</p>
-        <p>{{ textArr[imageArr[1] - 1].text2 }}</p>
-        <p>{{ textArr[imageArr[1] - 1].text3 }}</p>
-      </div>
-      <div class="carousel"
-        :style="{ backgroundImage: `url(${`img/Home/home_page_${imageArr[2]}.jpg`})` }">
-        <p>{{ textArr[imageArr[2] - 1].text1 }}</p>
-        <p>{{ textArr[imageArr[2] - 1].text2 }}</p>
-        <p>{{ textArr[imageArr[2] - 1].text3 }}</p>
-      </div>
-    </div>
-    <div class="control">
-      <div class="textGround" @click="prev">
-        <div class="arrow left"></div>
-        <p class="text1">PREV</p>
-      </div>
-      <div class="line"></div>
-      <div class="textGround" @click="next">
-        <p class="text2">NEXT</p>
-        <div class="arrow "></div>
-      </div>
-    </div>
-
-    <div class="lineControl">
-      <div class="lineBg center" :key="index" v-for="value, index in 6" @click="clickLine(index)">
-        <div class="lineEl" :class="{ isClick: imageID === index }"></div>
+    <swiper @slideChange="onSlideChange" @swiper="onSwiper" :mousewheel="true" :pagination="{
+        clickable: true,
+      }" :modules="modules" class="mySwiper">
+      <swiper-slide v-for="value, index in homeArr" :key="index">
+        <div class="carousel" :style="{ backgroundImage: `${value.img}` }">
+          <p>{{ value.text1 }}</p>
+          <p>{{ value.text2 }}</p>
+          <p>{{ value.text3 }}</p>
+        </div>
+      </swiper-slide>
+      <div class="control">
+        <div class="textGround" @click="prev">
+          <div class="arrow left"></div>
+          <p class="text1">PREV</p>
+        </div>
+        <div class="line"></div>
+        <div class="textGround" @click="next">
+          <p class="text2">NEXT</p>
+          <div class="arrow "></div>
+        </div>
       </div>
       <div class="number">
         <p id="currentPage">{{ imageID + 1 }}</p>
         <p>/</p>
-        <p>{{ textArr.length }}</p>
+        <p>{{ homeArr.length }}</p>
       </div>
-
-    </div>
-
+    </swiper>
   </div>
 </template>
 
@@ -147,15 +134,69 @@ p {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: black;
-  overflow: hidden;
 }
 
-.carouselGround {
-  position: absolute;
-  display: flex;
+
+.swiper {
+  width: 100%;
+  height: 100%;
 }
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:deep(.swiper-pagination) {
+  bottom: 40px;
+  left: 40px;
+  display: flex;
+  position: absolute;
+  gap: 7px;
+  align-items: center;
+}
+
+
+:deep(.swiper-pagination-bullet) {
+  width: 30px;
+  height: 4px;
+  border-radius: 2px;
+  background: white;
+  margin: 10px 0px !important;
+  cursor: pointer;
+
+}
+
+:deep(.swiper-pagination-bullet-active) {
+  background: var(--gold_1);
+}
+
+
+
+.number {
+  bottom: 43px;
+  left: 265px;
+  display: flex;
+  position: fixed;
+  width: 50px;
+  height: 20px;
+  overflow: hidden;
+  gap: 10px;
+  display: flex;
+
+  p {
+    font-size: 14px;
+    color: white;
+  }
+}
+
+
+
 
 .carousel {
   width: 100vw;
@@ -180,7 +221,7 @@ p {
   right: 80px;
   display: flex;
   gap: 60px;
-  z-index: 5;
+  z-index: 20;
 
   .line {
     height: 50px;
@@ -219,16 +260,16 @@ p {
 }
 
 .textGround:hover .text1 {
-  transition: all 0.3s;
   color: var(--gold_1) !important;
+  transition: all 0.3s;
   margin-left: 10px;
 }
 
 
 .textGround:hover .text2 {
+  color: var(--gold_1) !important;
   transition: all 0.3s;
   margin-right: 10px;
-  color: var(--gold_1) !important;
 }
 
 .textGround:hover .arrow {
@@ -236,57 +277,13 @@ p {
 }
 
 
-.lineControl {
-  bottom: 40px;
-  left: 40px;
-  display: flex;
-  position: absolute;
-  gap: 5px;
-  align-items: center;
-
-  .lineBg {
-    width: 40px;
-    height: 20px;
-    cursor: pointer;
-
-    .lineEl {
-      width: 35px;
-      height: 2px;
-      border-radius: 3rem;
-      background-color: rgba(245, 244, 244, 0.863);
-    }
-
-    .isClick {
-      background-color: var(--gold_1);
-    }
-
-  }
-
-  .number {
-    width: 50px;
-    height: 20px;
-    overflow: hidden;
-    gap: 10px;
-    margin-left: 15px;
-    display: flex;
-
-    p {
-      font-size: 14px;
-      color: white;
-    }
-  }
-}
 
 @media screen and (max-width:800px) {
   .control {
     display: none;
   }
 
-  .lineControl {
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
-  p{
+  p {
     // text-align: center;
     width: 70vw;
   }

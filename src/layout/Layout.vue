@@ -59,7 +59,7 @@ function handleScroll() {
 header {
   position: absolute;
   top: 0px;
-  z-index: 3;
+  z-index: 7;
 }
 
 .routerView {
