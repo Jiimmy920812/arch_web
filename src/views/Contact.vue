@@ -29,21 +29,25 @@
     </div>
   </div>
   <div class="footer">
-    <div class="iconGround">
-      <div class="icon icon_tel"></div>
-      <p>07-2826999</p>
+    <div class="footerSection">
+      <div class="iconGround">
+        <div class="icon icon_tel"></div>
+        <p>07-2826999</p>
+      </div>
+      <div class="iconGround">
+        <div class="icon icon_location"></div>
+        <p>高雄市前金區五福三路63號9樓</p>
+      </div>
     </div>
-    <div class="iconGround">
-      <div class="icon icon_location"></div>
-      <p>高雄市前金區五福三路63號9樓</p>
-    </div>
-    <div class="iconGround">
-      <div class="icon icon_mail"></div>
-      <p>youngder@young-der.com</p>
-    </div>
-    <div class="iconGround">
-      <div class="icon icon_line"></div>
-      <p>LINE官方帳號</p>
+    <div class="footerSection">
+      <div class="iconGround">
+        <div class="icon icon_mail"></div>
+        <p>youngder@young-der.com</p>
+      </div>
+      <div class="iconGround">
+        <div class="icon icon_line"></div>
+        <p>LINE官方帳號</p>
+      </div>
     </div>
   </div>
 </template>
@@ -65,8 +69,6 @@
 }
 
 
-
-
 .mainImg {
   width: 100%;
   height: 80vh;
@@ -85,6 +87,7 @@
 }
 
 
+
 .textGround {
   display: flex;
   flex-direction: column;
@@ -92,7 +95,7 @@
 
   .line {
     height: 1.5px;
-    width: 500px;
+    width: 90%;
     background-color: var(--gold_1);
   }
 
@@ -147,17 +150,26 @@
 }
 
 
+
+
+
 .footer {
   position: absolute;
   top: 1100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 70px;
   width: 100%;
+  gap: 30px;
   height: 150px;
   background-color: var(--black_1);
   background-image: url("../../public/img/menu-line.png");
+
+
+  .footerSection {
+    display: flex;
+    gap: 30px;
+  }
 
   .iconGround {
     display: flex;
@@ -193,5 +205,45 @@
       background-image: url('../../public/img/Contact/contact-line.png');
     }
   }
+}
+
+@media screen and (max-width:950px) {
+  .menuBg {
+    width: 65%;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    .inputCell {
+      width: 100%;
+    }
+
+    .confirm_btn{
+      margin: 0px;
+    }
+    
+  }
+
+  .footerSection {
+    flex-direction: column;
+    gap: 40px
+  }
+}
+
+@media screen and (max-width:580px) {
+  .footer {
+    height: 70vw;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footerSection{
+    width: 90%;
+    gap: 10px;
+  }
+
 }
 </style>

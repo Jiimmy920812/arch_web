@@ -77,7 +77,7 @@ const props = defineProps({
     left: -25px;
     transform: rotate(270deg) translate(-50%, -50%);
     transform-origin: top left;
-    letter-spacing: 15px;
+    letter-spacing: 10px;
 }
 
 .imgBg {
@@ -161,6 +161,7 @@ const props = defineProps({
 
     .verticalText {
         letter-spacing: 5px;
+        font-size: 14px;
     }
 
     .textGround {

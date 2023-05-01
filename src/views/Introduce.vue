@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import Card_introduce from '../components/Card_introduce.vue'
 import Card_introduce_row from '../components/Card_introduce_row.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -10,17 +10,25 @@ import { Mousewheel, Pagination } from 'swiper';
 const modules = [Mousewheel, Pagination]
 const isShow = ref(false)
 const resizewidth = ref(null)
-const screenWidth = ref(document.documentElement.clientWidth);
+const viewportWidth = ref(window.innerWidth);
+
+
+function viewtWidth() {
+  if (viewportWidth.value < 900) isShow.value = false
+  if (viewportWidth.value > 900 || viewportWidth.value < 500) isShow.value = true
+}
+viewtWidth()
+
 
 window.onresize = function () {
   resizewidth.value = window.innerWidth;
+  if (resizewidth.value < 900) isShow.value = false
+  if (resizewidth.value > 900 || resizewidth.value < 500) isShow.value = true
 };
 
-watch(() => [resizewidth.value, screenWidth.value], () => {
-  console.log(screenWidth.value, '螢幕寬');
-  if (resizewidth.value < 900 || screenWidth.value < 900) isShow.value = false
-  if (resizewidth.value > 900 || resizewidth.value < 400 || screenWidth.value > 900 || screenWidth.value < 400) isShow.value = true
-})
+
+
+
 
 
 const introduceArr = [
