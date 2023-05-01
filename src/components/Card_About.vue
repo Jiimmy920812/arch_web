@@ -49,8 +49,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .cardBg {
-    // margin: 50px;
-    padding: 50px;
+    padding: 5rem 0px;
     width: 80%;
     height: 100%;
     display: flex;
@@ -154,9 +153,12 @@ const props = defineProps({
     .verticalText_right {
         left: -25px;
     }
-
+    .photoGround{
+        width: 100%;
+        margin-left: 10%;
+    }
     .imgBg {
-        width: 230px;
+        width: 90%;
     }
 
     .verticalText {

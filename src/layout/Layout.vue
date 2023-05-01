@@ -7,18 +7,22 @@ import { usePageData } from '@/stores/pageData';
 const uPageData = usePageData();
 
 
-import { ref } from 'vue';
 
-const scrollDistance = ref(null)
 
 function handleScroll() {
-  // const { scrollHeight } = scrollDistance.value;
-  // const { clientHeight } = scrollDistance.value;
-  // const distance = scrollHeight - scrollTop - clientHeight;
-  const scrollTop = scrollDistance.value.scrollTop || document.documentElement.scrollTop;
-  if (scrollTop !== 0) uPageData.scorllUse = true
+  const scrollTop = document.documentElement.scrollTop || window.scrollY || window.pageYOffset;
+  if (scrollTop > 0) uPageData.scorllUse = true
   if (scrollTop === 0) uPageData.scorllUse = false
 }
+
+function handleTouch(event) {
+  const touch = event.touches[0];
+  const y = touch.clientY;
+  if (y > 0) { uPageData.scorllUse = true }
+  const scrollTop = document.documentElement.scrollTop || window.scrollY || window.pageYOffset;
+  if (scrollTop < 100) uPageData.scorllUse = false
+}
+
 
 
 </script>
@@ -31,7 +35,7 @@ function handleScroll() {
     <header>
       <headerNav :isScroll="uPageData.scorllUse" />
     </header>
-    <div class="routerView" @wheel="handleScroll" ref="scrollDistance">
+    <div class="routerView" @wheel="handleScroll" @touchmove="handleTouch">
       <RouterView />
     </div>
     <div class="topButtonBg" @click="uPageData.toTopSmooth" v-if="router.currentRoute.value.path !== '/'">

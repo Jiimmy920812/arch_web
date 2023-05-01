@@ -15,7 +15,7 @@ const viewportWidth = ref(window.innerWidth);
 
 function viewtWidth() {
   if (viewportWidth.value < 900) isShow.value = false
-  if (viewportWidth.value > 900 || viewportWidth.value < 500) isShow.value = true
+  if (viewportWidth.value > 900) isShow.value = true
 }
 viewtWidth()
 
@@ -23,7 +23,7 @@ viewtWidth()
 window.onresize = function () {
   resizewidth.value = window.innerWidth;
   if (resizewidth.value < 900) isShow.value = false
-  if (resizewidth.value > 900 || resizewidth.value < 500) isShow.value = true
+  if (resizewidth.value > 900) isShow.value = true
 };
 
 
@@ -33,48 +33,48 @@ window.onresize = function () {
 
 const introduceArr = [
   {
-    img: "url('../../public/img/plan/plan_1.jpg')",
+    img: "url(img/plan/plan_1.jpg)",
     title: "建興-駁二",
     content: '',
   },
   {
-    img: "url('../../public/img/plan/plan_2.jpg')",
+    img: "url(img/plan/plan_2.jpg)",
     title: "建興-絜",
     content: '陽明學區 文山特區',
   },
   {
-    img: "url('../../public/img/plan/plan_3.jpg')",
+    img: "url(img/plan/plan_3.jpg)",
     title: "建興-文",
     content: '',
   },
   {
-    img: "url('../../public/img/plan/plan_4.jpg')",
+    img: "url(img/plan/plan_4.jpg)",
     title: "建興-漾",
     content: '美術館海景第一排',
   },
   {
-    img: "url('../../public/img/plan/plan_5.jpg')",
+    img: "url(img/plan/plan_5.jpg)",
     title: "建興-昕",
     content: '',
   },
   {
-    img: "url('../../public/img/plan/plan_6.jpg')",
+    img: "url(img/plan/plan_6.jpg)",
     title: "建興-玄碩",
     content: '前鎮軟體園區',
   },
   {
-    img: "url('../../public/img/plan/plan_7.jpg')",
+    img: "url(img/plan/plan_7.jpg)",
     title: "建興-悅界",
     content: '高雄新灣區',
   },
   {
-    img: "url('../../public/img/plan/plan_8.jpg')",
+    img: "url(img/plan/plan_8.jpg)",
     title: "建興-望海",
     content: '愛河左岸旁',
   },
   {
-    img: "url('../../public/img/plan/plan_9.jpg')",
-    title: "建興-湛參庫",
+    img: "url(img/plan/plan_9.jpg)",
+    title: "建興-綻",
     content: '',
   }
 ]
@@ -82,40 +82,40 @@ const introduceArr = [
 
 const introduceArr_row = [
   {
-    img_1: "url('../../public/img/plan/plan_1.jpg')",
+    img_1: "url(img/plan/plan_1.jpg)",
     title_1: "建興-駁二",
     content_1: '',
-    img_2: "url('../../public/img/plan/plan_2.jpg')",
+    img_2: "url(img/plan/plan_2.jpg)",
     title_2: "建興-絜",
     content_2: '陽明學區 文山特區',
   },
   {
-    img_1: "url('../../public/img/plan/plan_3.jpg')",
+    img_1: "url(img/plan/plan_3.jpg)",
     title_1: "建興-文",
     content_1: '',
-    img_2: "url('../../public/img/plan/plan_4.jpg')",
+    img_2: "url(img/plan/plan_4.jpg)",
     title_2: "建興-漾",
     content_2: '美術館海景第一排',
   },
   {
-    img_1: "url('../../public/img/plan/plan_5.jpg')",
+    img_1: "url(img/plan/plan_5.jpg)",
     title_1: "建興-昕",
     content_1: '',
-    img_2: "url('../../public/img/plan/plan_6.jpg')",
+    img_2: "url(img/plan/plan_6.jpg)",
     title_2: "建興-玄碩",
     content_2: '前鎮軟體園區',
   },
   {
-    img_1: "url('../../public/img/plan/plan_7.jpg')",
+    img_1: "url(img/plan/plan_7.jpg)",
     title_1: "建興-悅界",
     content_1: '高雄新灣區',
-    img_2: "url('../../public/img/plan/plan_8.jpg')",
+    img_2: "url(img/plan/plan_8.jpg)",
     title_2: "建興-望海",
     content_2: '愛河左岸旁',
   },
   {
-    img_1: "url('../../public/img/plan/plan_9.jpg')",
-    title_1: "建興-湛參庫",
+    img_1: "url(img/plan/plan_9.jpg)",
+    title_1: "建興-綻",
     content_1: '',
   }
 ]
@@ -124,20 +124,18 @@ const introduceArr_row = [
 </script>
 
 <template>
-  <swiper :direction="'vertical'" :slidesPerView="1" :mousewheel="true" :pagination="{
+  <div class="introduceBg" v-if="!isShow">
+    <div class="introduceSection" v-for="v, index in introduceArr" :key="index">
+      <Card_introduce :img="v.img" :title="v.title" :content="v.content" />
+    </div>
+  </div>
+  <swiper v-if="isShow" :direction="'vertical'" :slidesPerView="1" :mousewheel="true" :pagination="{
       clickable: true,
     }" :modules="modules" class="mySwiper">
-
-    <swiper-slide v-if="isShow" v-for="v, index in introduceArr_row" :key="index">
+    <swiper-slide v-for="v, index in introduceArr_row" :key="index">
       <Card_introduce_row :img_1="v.img_1" :title_1="v.title_1" :content_1="v.content_1" :img_2="v.img_2"
         :title_2="v.title_2" :content_2="v.content_2" />
     </swiper-slide>
-
-    <swiper-slide v-if="!isShow" class="introduceArr" v-for="v, index in introduceArr" :key="index">
-      <Card_introduce :img="v.img" :title="v.title" :content="v.content" />
-    </swiper-slide>
-
-
   </swiper>
   <div class="footer">
     <p>
@@ -153,6 +151,28 @@ const introduceArr_row = [
 </template>
 
 <style lang="scss" scoped>
+.introduceBg {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--black_2);
+}
+
+.introduceSection {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.introduceBg .introduceSection:first-child {
+  margin-top: 100px;
+}
+
+.introduceBg .introduceSection:last-child {
+  margin-bottom: 100px;
+}
+
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -194,6 +214,7 @@ const introduceArr_row = [
 
 
 
+
 .footer {
   gap: 10vw;
   position: fixed;
@@ -225,6 +246,7 @@ const introduceArr_row = [
       font-size: 14px;
     }
   }
+
 
 }
 </style>

@@ -32,7 +32,6 @@ const props = defineProps({
 <style lang="scss" scoped>
 .blackText {
   color: black !important;
-  ;
 }
 
 .whiteText {

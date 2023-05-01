@@ -3,7 +3,8 @@
 </script>
 
 <template>
-  <div class="mainImg bgSetting center">
+  <div class="contactbg center">
+    <div class="mainImg bgSetting"></div>
     <div class="menuBg">
       <div class="textGround">
         <div class="line"></div>
@@ -27,26 +28,26 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="footer">
-    <div class="footerSection">
-      <div class="iconGround">
-        <div class="icon icon_tel"></div>
-        <p>07-2826999</p>
+    <div class="footer">
+      <div class="footerSection">
+        <div class="iconGround">
+          <div class="icon icon_tel"></div>
+          <p>07-2826999</p>
+        </div>
+        <div class="iconGround">
+          <div class="icon icon_location"></div>
+          <p>高雄市前金區五福三路63號9樓</p>
+        </div>
       </div>
-      <div class="iconGround">
-        <div class="icon icon_location"></div>
-        <p>高雄市前金區五福三路63號9樓</p>
-      </div>
-    </div>
-    <div class="footerSection">
-      <div class="iconGround">
-        <div class="icon icon_mail"></div>
-        <p>youngder@young-der.com</p>
-      </div>
-      <div class="iconGround">
-        <div class="icon icon_line"></div>
-        <p>LINE官方帳號</p>
+      <div class="footerSection">
+        <div class="iconGround">
+          <div class="icon icon_mail"></div>
+          <p>youngder@young-der.com</p>
+        </div>
+        <div class="iconGround">
+          <div class="icon icon_line"></div>
+          <p>LINE官方帳號</p>
+        </div>
       </div>
     </div>
   </div>
@@ -68,6 +69,10 @@
   background-color: var(--black_1);
 }
 
+.contactbg{
+  width: 100%;
+  flex-direction: column;
+}
 
 .mainImg {
   width: 100%;
@@ -76,8 +81,8 @@
 }
 
 .menuBg {
-  position: absolute;
-  top: 300px;
+  margin-top: -200px;
+  margin-bottom: 100px;
   width: 500px;
   height: 600px;
   background: #fff;
@@ -154,8 +159,6 @@
 
 
 .footer {
-  position: absolute;
-  top: 1100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,10 +225,10 @@
       width: 100%;
     }
 
-    .confirm_btn{
+    .confirm_btn {
       margin: 0px;
     }
-    
+
   }
 
   .footerSection {
@@ -240,7 +243,8 @@
     flex-direction: column;
     gap: 30px;
   }
-  .footerSection{
+
+  .footerSection {
     width: 90%;
     gap: 10px;
   }

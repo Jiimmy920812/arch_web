@@ -58,7 +58,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .cardBg {
-    padding: 5rem;
+    padding: 5rem ;
     width: 80%;
     height: 100%;
     display: flex;
@@ -174,13 +174,19 @@ const props = defineProps({
         width: 100%;
     }
 
+    .imgBg {
+        width: 90%;
+    }
+
+    .subTitle {
+        margin-left: 10%;
+    }
+
 }
 
 
 @media screen and (max-width:550px) {
-    .imgBg {
-        width: 350px;
-    }
+
 
     .textGround {
         .title {
@@ -191,28 +197,17 @@ const props = defineProps({
             font-size: 14px;
         }
     }
-}
 
-@media screen and (max-width:620px) {
-    .imgBg {
-        width: 400px;
+    .verticalText {
+        font-size: 14px;
     }
 
-    .cardBg {
-        padding:50px 0px ;
-    }
 }
 
-@media screen and (max-width:550px) {
-    .imgBg {
-        width: 250px;
-    }
-}
+
 
 @media screen and (max-width:420px) {
     .verticalText {
-        width: 300px;
-        transform: none;
-        top: -30px;
     }
-}</style>
+}
+</style>

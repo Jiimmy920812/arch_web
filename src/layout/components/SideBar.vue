@@ -45,11 +45,11 @@ function menuClick() {
 </script>
 
 <template>
-    <div class="menuGround">
-        <p class="menuText"
-            :class="{ blackText: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteText: isShow || props.isScroll }">
-            M E N U</p>
-        <div class="sideBarGround">
+    <div class="menuBg">
+        <div class="menuGround">
+            <p class="menuText"
+                :class="{ blackText: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteText: isShow || props.isScroll }">
+                M E N U</p>
             <div class="menu" :class="{ 'active': isActive }" @click="menuClick">
                 <span
                     :class="{ blackSpan: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteSpan: isShow || props.isScroll }"></span>
@@ -59,7 +59,6 @@ function menuClick() {
                     :class="{ blackSpan: router.currentRoute.value.path !== '/' && router.currentRoute.value.path !== '/Introduce', whiteSpan: isShow || props.isScroll }"></span>
             </div>
         </div>
-
         <div class="hamburgerMenu" v-if="isShow">
             <Transition name="slide-fade" @enter="onEnter" @leave="onLeave">
                 <ul class="linkGround" v-if="isActive">
@@ -113,23 +112,29 @@ function menuClick() {
 }
 
 
-.menuGround {
+.menuBg {
     position: fixed;
-    justify-content: end;
-    padding-right: 5%;
-    top: 0;
-    right: 0;
-    height: 100px;
-    width: 450px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    top: 0px;
+    right: 0px;
+    height: 100px;
+    width: 450px;
 
-    .menuText {
-        font-size: 20px;
-        color: white;
-        font-weight: bolder;
+    .menuGround {
+        right: 5vw;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .menuText {
+            font-size: 20px;
+            color: white;
+            font-weight: bolder;
+        }
     }
+
 
 }
 
@@ -256,7 +261,11 @@ function menuClick() {
 
 
 @media screen and (max-width:500px) {
-    .menuGround {
+    .menuText {
+        display: none;
+    }
+
+    .menuBg {
         width: 100vw;
     }
 }

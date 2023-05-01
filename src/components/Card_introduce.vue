@@ -14,7 +14,6 @@ const props = defineProps({
     },
 })
 </script>
-
 <template>
     <main>
         <div class="photoSize center">
@@ -41,6 +40,7 @@ main {
     width: 55vw;
     height: 46vw;
     border: 4px double #eab76e;
+   
 }
 
 .photo {
@@ -50,7 +50,7 @@ main {
     opacity: 0.2;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 1;
 }
 
 .text {
@@ -85,18 +85,17 @@ main {
     opacity: 0;
 }
 
-@media screen and (max-width:600px) {
-    .photoSize {
-        width: 60vw;
-        height: 50vw;
-    }
-}
+
 
 @media screen and (max-width:880px) {
+
+    .photoSize {
+        width: 75%;
+        height: 50vw;
+    }
+
     .text {
         font-size: 40px;
     }
 }
-
-
 </style>

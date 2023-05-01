@@ -149,7 +149,7 @@ const planImg = [
 
 
 .section4 {
-  width: 60%;
+  width: 80%;
   height: 60%;
   display: flex;
   flex-wrap: wrap;
@@ -162,6 +162,8 @@ const planImg = [
   }
 
   .textGround {
+    display: flex;
+    align-items: center;
     text-align: center;
 
     .lastText {
@@ -188,7 +190,11 @@ const planImg = [
 }
 
 @media screen and (max-width:550px) {
-
+  .section1{
+    p{
+      width: 80%;
+    }
+  }
   .footer_text {
     font-size: 14px;
   }
