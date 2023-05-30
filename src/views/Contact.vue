@@ -32,17 +32,17 @@
       <div class="footerSection">
         <div class="iconGround">
           <div class="icon icon_tel"></div>
-          <p>07-2826999</p>
+          <p>07-5568846</p>
         </div>
         <div class="iconGround">
           <div class="icon icon_location"></div>
-          <p>高雄市前金區五福三路63號9樓</p>
+          <p>高雄市鼓山區五福三路43號8樓</p>
         </div>
       </div>
       <div class="footerSection">
         <div class="iconGround">
           <div class="icon icon_mail"></div>
-          <p>youngder@young-der.com</p>
+          <p>chenSing@gamil.com</p>
         </div>
         <div class="iconGround">
           <div class="icon icon_line"></div>

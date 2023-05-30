@@ -1,4 +1,5 @@
 <script  setup>
+
 import headerNav from './components/HeaderNav.vue';
 import SideBar from './components/SideBar.vue';
 import { useRouter } from 'vue-router';
@@ -7,21 +8,6 @@ import { usePageData } from '@/stores/pageData';
 const uPageData = usePageData();
 
 
-
-
-function handleScroll() {
-  const scrollTop = document.documentElement.scrollTop || window.scrollY || window.pageYOffset;
-  if (scrollTop > 0) uPageData.scorllUse = true
-  if (scrollTop === 0) uPageData.scorllUse = false
-}
-
-function handleTouch(event) {
-  const touch = event.touches[0];
-  const y = touch.clientY;
-  if (y > 0) { uPageData.scorllUse = true }
-  const scrollTop = document.documentElement.scrollTop || window.scrollY || window.pageYOffset;
-  if (scrollTop < 100) uPageData.scorllUse = false
-}
 
 
 
@@ -35,8 +21,8 @@ function handleTouch(event) {
     <header>
       <headerNav :isScroll="uPageData.scorllUse" />
     </header>
-    <div class="routerView" @wheel="handleScroll" @touchmove="handleTouch">
-      <RouterView />
+    <div class="routerView">
+      <RouterView  />
     </div>
     <div class="topButtonBg" @click="uPageData.toTopSmooth" v-if="router.currentRoute.value.path !== '/'">
       <div class="topButton"></div>

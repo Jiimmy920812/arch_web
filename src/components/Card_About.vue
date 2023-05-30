@@ -147,16 +147,20 @@ const props = defineProps({
     .photoGround {
         margin: 0 auto;
     }
+
+
 }
 
 @media screen and (max-width:550px) {
     .verticalText_right {
         left: -25px;
     }
-    .photoGround{
+
+    .photoGround {
         width: 100%;
         margin-left: 10%;
     }
+
     .imgBg {
         width: 90%;
     }
@@ -170,12 +174,12 @@ const props = defineProps({
         .title {
             font-size: 18px;
         }
-        .content{
+
+        .content {
             font-size: 14px;
         }
     }
 
 
 
-}
-</style>
+}</style>
